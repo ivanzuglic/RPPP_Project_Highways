@@ -6,7 +6,7 @@ namespace Projekt_RPPP_12
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Master");
         }
     }
 }
