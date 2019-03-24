@@ -1,0 +1,6 @@
+Paula Mišeta - entiteti Autoceste, Upravitelj, Sjediste, LokacijaAutoceste, SustavNaplate
+Petra Mišeta - entiteti NaplatnaPostaja, LokacijaPostaje, Zaposlenik, VrstaZaposlenika
+Ervin Sivac  - entiteti Dionica, LokacijaDionica, Objekt, VrstaObjekta
+Marko Prnić  - entiteti Racun, NacinPlacanja, KategorijaVozila, NaplatnaKucica, Cjenik
+Josip Ognjan - entiteti Scenarij, KategorijaScenarija, Uredaj, VrstaUredaja
+Ivan Žuglić  - entiteti Stanje, Zabrana, Dogadaj, VrstaDogadaja
