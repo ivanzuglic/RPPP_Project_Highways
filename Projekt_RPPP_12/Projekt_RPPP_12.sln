@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projekt_RPPP_12", "Projekt_RPPP_12\Projekt_RPPP_12.csproj", "{4D32BAA7-045A-4A79-A72E-89F2AE35D596}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPPP12", "RPPP12\RPPP12.csproj", "{D475F4AA-FAB0-4D0E-B182-45F94180F0D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4D32BAA7-045A-4A79-A72E-89F2AE35D596}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4D32BAA7-045A-4A79-A72E-89F2AE35D596}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4D32BAA7-045A-4A79-A72E-89F2AE35D596}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4D32BAA7-045A-4A79-A72E-89F2AE35D596}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D475F4AA-FAB0-4D0E-B182-45F94180F0D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D475F4AA-FAB0-4D0E-B182-45F94180F0D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D475F4AA-FAB0-4D0E-B182-45F94180F0D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D475F4AA-FAB0-4D0E-B182-45F94180F0D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
