@@ -51,6 +51,7 @@ namespace RPPP12.Models
                 optionsBuilder.UseSqlServer("Server=rppp.fer.hr,3000;Database=RPPP12;User Id=rppp12;Password=snoopy#012");
             }
         }
+    
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
