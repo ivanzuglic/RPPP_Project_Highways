@@ -1,0 +1,63 @@
+﻿@model RPPP12.Models.Dionica
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+
+<h4>Dionica</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SifraDionice" />
+            <div class="form-group">
+                <label asp-for="Naziv" class="control-label"></label>
+                <input asp-for="Naziv" class="form-control" />
+                <span asp-validation-for="Naziv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SifraPocetka" class="control-label"></label>
+                <select asp-for="SifraPocetka" class="form-control" asp-items="ViewBag.SifraPocetka"></select>
+                <span asp-validation-for="SifraPocetka" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SifraKraja" class="control-label"></label>
+                <select asp-for="SifraKraja" class="form-control" asp-items="ViewBag.SifraKraja"></select>
+                <span asp-validation-for="SifraKraja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SifraAutoceste" class="control-label"></label>
+                <select asp-for="SifraAutoceste" class="form-control" asp-items="ViewBag.SifraAutoceste"></select>
+                <span asp-validation-for="SifraAutoceste" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Duljina" class="control-label"></label>
+                <input asp-for="Duljina" class="form-control" />
+                <span asp-validation-for="Duljina" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>

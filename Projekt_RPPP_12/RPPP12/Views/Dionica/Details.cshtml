@@ -1,0 +1,57 @@
+﻿@model RPPP12.Models.Dionica
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>Dionica</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Naziv)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Duljina)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Duljina)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraAutocesteNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SifraAutocesteNavigation.ImeAutoceste)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraKrajaNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SifraKrajaNavigation.NazivLokacije)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraPocetkaNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SifraPocetkaNavigation.NazivLokacije)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SifraDionice">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>
