@@ -46,19 +46,37 @@ namespace RPPP12
             }
 
             app.UseStaticFiles();
+
             app.UseMvc(routes => {
-                routes.MapRoute(
-                    name: "dionica",
-                    template: "{controller=Dionica}/{action=Index}"
-                        );
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}"
-                        );
-            }
-            
-            );
-            
+                );
+                routes.MapRoute(
+                    name: "dionica",
+                    template: "{controller=Dionica}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "naplatnapostaja",
+                    template: "{controller=NaplatnaPostaja}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "naplatnakucica",
+                    template: "{controller=NaplatnaKucica}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "uredaj",
+                    template: "{controller=Uredaj}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "dogadaj",
+                    template: "{controller=Dogadaj}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "upravitelj",
+                    template: "{controller=Upravitelj}/{action=Index}"
+                );
+            });  
         }
     }
 }
