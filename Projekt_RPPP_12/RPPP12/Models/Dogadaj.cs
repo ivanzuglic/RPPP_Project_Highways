@@ -18,6 +18,7 @@ namespace RPPP12.Models
         public int SifraDionica { get; set; }
         public string Opis { get; set; }
 
+        public Dionica SifraDionicaNavigation { get; set; }
         public RazinaOpasnosti SifraRazinaOpasnostiNavigation { get; set; }
         public ICollection<Alarm> Alarm { get; set; }
         public ICollection<Stanje> Stanje { get; set; }

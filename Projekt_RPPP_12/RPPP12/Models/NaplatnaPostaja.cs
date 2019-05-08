@@ -16,6 +16,7 @@ namespace RPPP12.Models
         public int SifraLokacijePostaje { get; set; }
         public string ImePostaje { get; set; }
 
+        public Dionica SifraDioniceNavigation { get; set; }
         public LokacijaPostaje SifraLokacijePostajeNavigation { get; set; }
         public ICollection<NaplatnaKucica> NaplatnaKucica { get; set; }
         public ICollection<Zaposlenik> Zaposlenik { get; set; }

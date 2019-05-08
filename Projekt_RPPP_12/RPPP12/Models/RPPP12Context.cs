@@ -51,7 +51,6 @@ namespace RPPP12.Models
                 optionsBuilder.UseSqlServer("Server=rppp.fer.hr,3000;Database=RPPP12;User Id=rppp12;Password=snoopy#012");
             }
         }
-    
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -226,6 +225,12 @@ namespace RPPP12.Models
 
                 entity.Property(e => e.SifraRazinaOpasnosti).HasColumnName("sifraRazinaOpasnosti");
 
+                entity.HasOne(d => d.SifraDionicaNavigation)
+                    .WithMany(p => p.Dogadaj)
+                    .HasForeignKey(d => d.SifraDionica)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Dogadaj_Dionica");
+
                 entity.HasOne(d => d.SifraRazinaOpasnostiNavigation)
                     .WithMany(p => p.Dogadaj)
                     .HasForeignKey(d => d.SifraRazinaOpasnosti)
@@ -348,6 +353,12 @@ namespace RPPP12.Models
                 entity.Property(e => e.SifraDionice).HasColumnName("sifraDionice");
 
                 entity.Property(e => e.SifraLokacijePostaje).HasColumnName("sifraLokacijePostaje");
+
+                entity.HasOne(d => d.SifraDioniceNavigation)
+                    .WithMany(p => p.NaplatnaPostaja)
+                    .HasForeignKey(d => d.SifraDionice)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_NaplatnaPostaja_Dionica");
 
                 entity.HasOne(d => d.SifraLokacijePostajeNavigation)
                     .WithMany(p => p.NaplatnaPostaja)

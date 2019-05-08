@@ -7,6 +7,8 @@ namespace RPPP12.Models
     {
         public Dionica()
         {
+            Dogadaj = new HashSet<Dogadaj>();
+            NaplatnaPostaja = new HashSet<NaplatnaPostaja>();
             Objekt = new HashSet<Objekt>();
         }
 
@@ -20,6 +22,8 @@ namespace RPPP12.Models
         public Autocesta SifraAutocesteNavigation { get; set; }
         public LokacijaPostaje SifraKrajaNavigation { get; set; }
         public LokacijaPostaje SifraPocetkaNavigation { get; set; }
+        public ICollection<Dogadaj> Dogadaj { get; set; }
+        public ICollection<NaplatnaPostaja> NaplatnaPostaja { get; set; }
         public ICollection<Objekt> Objekt { get; set; }
     }
 }
