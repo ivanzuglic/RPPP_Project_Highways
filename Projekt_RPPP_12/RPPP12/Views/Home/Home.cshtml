@@ -10,6 +10,20 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>Autoceste</title>
+    <style>
+        .jumbotron {
+            margin-bottom:0;
+        }
+        .card-img-top {
+            width: 100%;
+            height: 17vw;
+            object-fit: cover;
+        }
+        .display-4 {
+            margin-bottom: 7%;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
@@ -17,68 +31,68 @@
         Html.RenderPartial("_Navbar");
     }
 
-    <div class="jumbotron" style="margin-bottom:0;">
-        <h1 class="display-4" style="margin-bottom: 10%; text-align:center;">Dobrodošli na Hrvatske autoceste!</h1>
+    <div class="jumbotron">
+        <h1 class="display-4">Dobrodošli na Hrvatske autoceste!</h1>
         <div class="row justify-content-center">
-            <div class="col-sm-3">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="col-sm-4" style="margin-bottom:2%;">
+                <div class="card">
+                    <img class="card-img-top" src="~/images/dionica.jpg" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Dionice</h5>
+                        <p class="card-text">Detalji vezani uz dionice</p>
+                        <a href="#" class="btn btn-primary">Pregled</a>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="col-sm-4" style="margin-bottom:2%;">
+                <div class="card">
+                    <img class="card-img-top" src="~/images/naplatnapostaja.jpeg" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Naplatne postaje</h5>
+                        <p class="card-text">Detalji vezani uz naplatne postaje</p>
+                        <a href="#" class="btn btn-primary">Pregled</a>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="col-sm-4" style="margin-bottom:2%;">
+                <div class="card">
+                    <img class="card-img-top" src="~/images/naplatnakucica.jpeg" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Naplatne kućice</h5>
+                        <p class="card-text">Detalji vezane uz naplatne kućice</p>
+                        <a href="#" class="btn btn-primary">Pregled</a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center" style="padding-top: 3%;">
-            <div class="col-sm-3">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="row justify-content-center" style="padding-top:3%;">
+            <div class="col-sm-4" style="margin-bottom:2%;">
+                <div class="card">
+                    <img class="card-img-top" src="~/images/uredaj.jpg" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Uređaji</h5>
+                        <p class="card-text">Detalji vezani uz uređaje</p>
+                        <a href="#" class="btn btn-primary">Pregled</a>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="col-sm-4" style="margin-bottom:2%;">
+                <div class="card">
+                    <img class="card-img-top" src="~/images/dogadaj.jpg" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Događaji</h5>
+                        <p class="card-text">Detalji vezani uz događaje</p>
+                        <a href="#" class="btn btn-primary">Pregled</a>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="col-sm-4" style="margin-bottom:2%;">
+                <div class="card">
+                    <img class="card-img-top" src="~/images/upravitelj.jpg" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Upravitelji</h5>
+                        <p class="card-text">Detalji vezani uz upravitelje</p>
+                        <a href="#" class="btn btn-primary">Pregled</a>
                     </div>
                 </div>
             </div>
