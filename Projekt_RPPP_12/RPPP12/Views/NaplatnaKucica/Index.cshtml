@@ -1,0 +1,55 @@
+﻿@model IEnumerable<RPPP12.Models.NaplatnaKucica>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SifraBlagajnikaNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SifraPostajaNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VrstaNaplatneKuciceNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SifraBlagajnikaNavigation.Ime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SifraPostajaNavigation.SifraPostaje)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VrstaNaplatneKuciceNavigation.VrstaNaplatneKucice1)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SifraKucica">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SifraKucica">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SifraKucica">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

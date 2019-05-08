@@ -1,0 +1,45 @@
+﻿@model RPPP12.Models.Uredaj
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>Uredaj</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraObjektaNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SifraObjektaNavigation.SifraObjekta)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraVrsteUredajaNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SifraVrsteUredajaNavigation.SifraVrsteUredaja)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SifraUredaja">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>
