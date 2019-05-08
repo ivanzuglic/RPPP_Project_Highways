@@ -1,0 +1,48 @@
+﻿@model RPPP12.Models.NaplatnaPostaja
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>NaplatnaPostaja</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraDionice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SifraDionice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ImePostaje)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ImePostaje)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraLokacijePostajeNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SifraLokacijePostajeNavigation.NazivLokacije)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="SifraPostaje" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
+</body>
+</html>
