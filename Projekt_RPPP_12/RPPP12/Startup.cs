@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -45,7 +46,19 @@ namespace RPPP12
             }
 
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc(routes => {
+                routes.MapRoute(
+                    name: "dionica",
+                    template: "{controller=Dionica}/{action=Index}"
+                        );
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}"
+                        );
+            }
+            
+            );
+            
         }
     }
 }
