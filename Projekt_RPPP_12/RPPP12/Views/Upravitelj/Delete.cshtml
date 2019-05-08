@@ -1,0 +1,60 @@
+﻿@model RPPP12.Models.Upravitelj
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Upravitelj</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Oib)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Oib)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Telefon)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraSjedistaNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SifraSjedistaNavigation.Adresa)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="SifraUpravitelja" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
+</body>
+</html>
