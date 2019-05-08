@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<RPPP12.Models.NaplatnaPostaja>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -13,6 +13,7 @@
     <title>Index</title>
 </head>
 <body>
+@section container {
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -52,5 +53,6 @@
 }
     </tbody>
 </table>
+}
 </body>
 </html>
