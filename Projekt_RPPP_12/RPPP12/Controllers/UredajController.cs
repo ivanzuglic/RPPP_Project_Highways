@@ -12,17 +12,54 @@ namespace RPPP12.Controllers
     public class UredajController : Controller
     {
         private readonly RPPP12Context _context;
+        private const int ITEMS_PER_PAGE = 3;
 
         public UredajController(RPPP12Context context)
         {
             _context = context;
         }
 
-        // GET: Uredaj
-        public async Task<IActionResult> Index()
+        // GET: Uredaj/pagination-2
+        //or
+        //GET: Uredaj/all
+        public async Task<IActionResult> Index(String data="pagination-1")
         {
-            var rPPP12Context = _context.Uredaj.Include(u => u.SifraObjektaNavigation).Include(u => u.SifraVrsteUredajaNavigation);
-            return View(await rPPP12Context.ToListAsync());
+            String[] config = data.Split("-");
+            switch (config.Length)
+            {
+                case 1:
+                    if(config[0].Trim().ToLower() == "all")
+                    {
+                        var rPPP12Context = _context.Uredaj.Include(u => u.SifraObjektaNavigation)
+                        .Include(u => u.SifraVrsteUredajaNavigation)
+                        .OrderBy(u => u.SifraUredaja);
+                        return View(await rPPP12Context.ToListAsync());
+                    }
+                    else
+                    {
+                        return BadRequest("Invalid argument. Expected all");
+                    }
+                    
+                case 2:
+                    try
+                    {
+                        int pageIndex = Int32.Parse(config[1].Trim());
+                        var rPPP12Context2 = _context.Uredaj.Include(u => u.SifraObjektaNavigation)
+                        .Include(u => u.SifraVrsteUredajaNavigation)
+                        .OrderBy(u => u.SifraUredaja)
+                        .Skip(ITEMS_PER_PAGE * (pageIndex - 1))
+                        .Take(ITEMS_PER_PAGE);
+                        return View(await rPPP12Context2.ToListAsync());
+                    }
+                    catch (Exception e)
+                    {
+                        return BadRequest("Invalid¸pageIndexArgument. Input must be type of action-pageIndex.");
+                    }
+                    
+                default:
+                    return BadRequest("Invalid argument input. Input must be type of action-pageIndex.");
+            }
+            
         }
 
         // GET: Uredaj/Details/5
