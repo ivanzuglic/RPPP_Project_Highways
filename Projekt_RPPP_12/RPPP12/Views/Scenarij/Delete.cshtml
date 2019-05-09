@@ -1,4 +1,5 @@
 ﻿@model RPPP12.Models.Scenarij
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     Layout = null;
@@ -13,42 +14,42 @@
 </head>
 <body>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Scenarij</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NazivScenarija)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NazivScenarija)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Procedura)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Procedura)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SifraVrsteObjekta)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SifraVrsteObjekta)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SifraVrsteScenarijaNavigation)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SifraVrsteScenarijaNavigation.NazivKategorijeScenarija)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="SifraScenarija" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
-</div>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Scenarij</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.NazivScenarija)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NazivScenarija)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Procedura)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Procedura)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.SifraVrsteObjekta)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SifraVrsteObjekta)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.SifraVrsteScenarijaNavigation)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SifraVrsteScenarijaNavigation.NazivKategorijeScenarija)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="SifraScenarija" />
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </form>
+    </div>
 </body>
 </html>

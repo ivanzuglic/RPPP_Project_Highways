@@ -1,4 +1,5 @@
 ﻿@model RPPP12.Models.Uredaj
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     Layout = null;
@@ -13,36 +14,36 @@
 </head>
 <body>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Uredaj</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SifraObjektaNavigation)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SifraObjektaNavigation.SifraObjekta)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SifraVrsteUredajaNavigation)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SifraVrsteUredajaNavigation.SifraVrsteUredaja)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="SifraUredaja" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
-</div>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Uredaj</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.SifraObjektaNavigation)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SifraObjektaNavigation.SifraObjekta)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.SifraVrsteUredajaNavigation)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SifraVrsteUredajaNavigation.SifraVrsteUredaja)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="SifraUredaja" />
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </form>
+    </div>
 </body>
 </html>

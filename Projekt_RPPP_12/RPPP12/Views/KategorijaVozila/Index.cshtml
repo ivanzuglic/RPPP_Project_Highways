@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<RPPP12.Models.KategorijaVozila>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     Layout = null;
@@ -12,38 +13,39 @@
     <title>Index</title>
 </head>
 <body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Oznaka)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Opis)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Oznaka)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Opis)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.SifraKategorijaVozila">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.SifraKategorijaVozila">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.SifraKategorijaVozila">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Oznaka)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Opis)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Oznaka)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Opis)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.SifraKategorijaVozila">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.SifraKategorijaVozila">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.SifraKategorijaVozila">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </body>
 </html>

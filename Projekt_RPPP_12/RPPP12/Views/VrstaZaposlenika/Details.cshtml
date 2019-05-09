@@ -1,4 +1,5 @@
 ﻿@model RPPP12.Models.VrstaZaposlenika
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     Layout = null;
@@ -13,21 +14,21 @@
 </head>
 <body>
 
-<div>
-    <h4>VrstaZaposlenika</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Naziv)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Naziv)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.SifraVrsteZaposlenika">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        <h4>VrstaZaposlenika</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Naziv)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Naziv)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.SifraVrsteZaposlenika">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
 </body>
 </html>

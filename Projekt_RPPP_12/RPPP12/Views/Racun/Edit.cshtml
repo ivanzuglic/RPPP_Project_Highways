@@ -1,4 +1,5 @@
 ﻿@model RPPP12.Models.Racun
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     Layout = null;
@@ -13,51 +14,51 @@
 </head>
 <body>
 
-<h4>Racun</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="SifraRacun" />
-            <div class="form-group">
-                <label asp-for="SifraKucica" class="control-label"></label>
-                <select asp-for="SifraKucica" class="form-control" asp-items="ViewBag.SifraKucica"></select>
-                <span asp-validation-for="SifraKucica" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RegistarskaOznaka" class="control-label"></label>
-                <input asp-for="RegistarskaOznaka" class="form-control" />
-                <span asp-validation-for="RegistarskaOznaka" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DatumVrijeme" class="control-label"></label>
-                <input asp-for="DatumVrijeme" class="form-control" />
-                <span asp-validation-for="DatumVrijeme" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SifraKategorijaVozila" class="control-label"></label>
-                <select asp-for="SifraKategorijaVozila" class="form-control" asp-items="ViewBag.SifraKategorijaVozila"></select>
-                <span asp-validation-for="SifraKategorijaVozila" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SifraNacinPlacanja" class="control-label"></label>
-                <select asp-for="SifraNacinPlacanja" class="form-control" asp-items="ViewBag.SifraNacinPlacanja"></select>
-                <span asp-validation-for="SifraNacinPlacanja" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
+    <h4>Racun</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="SifraRacun" />
+                <div class="form-group">
+                    <label asp-for="SifraKucica" class="control-label"></label>
+                    <select asp-for="SifraKucica" class="form-control" asp-items="ViewBag.SifraKucica"></select>
+                    <span asp-validation-for="SifraKucica" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RegistarskaOznaka" class="control-label"></label>
+                    <input asp-for="RegistarskaOznaka" class="form-control" />
+                    <span asp-validation-for="RegistarskaOznaka" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DatumVrijeme" class="control-label"></label>
+                    <input asp-for="DatumVrijeme" class="form-control" />
+                    <span asp-validation-for="DatumVrijeme" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SifraKategorijaVozila" class="control-label"></label>
+                    <select asp-for="SifraKategorijaVozila" class="form-control" asp-items="ViewBag.SifraKategorijaVozila"></select>
+                    <span asp-validation-for="SifraKategorijaVozila" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SifraNacinPlacanja" class="control-label"></label>
+                    <select asp-for="SifraNacinPlacanja" class="form-control" asp-items="ViewBag.SifraNacinPlacanja"></select>
+                    <span asp-validation-for="SifraNacinPlacanja" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
 </body>
 </html>

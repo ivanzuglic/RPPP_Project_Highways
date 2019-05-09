@@ -1,4 +1,5 @@
 ﻿@model RPPP12.Models.Sjediste
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     Layout = null;
@@ -13,30 +14,30 @@
 </head>
 <body>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Sjediste</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ImeSjedista)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ImeSjedista)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Adresa)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Adresa)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="SifraSjedista" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
-</div>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Sjediste</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ImeSjedista)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ImeSjedista)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Adresa)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Adresa)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="SifraSjedista" />
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </form>
+    </div>
 </body>
 </html>

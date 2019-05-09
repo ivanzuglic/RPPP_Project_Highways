@@ -1,4 +1,5 @@
 ﻿@model RPPP12.Models.Dogadaj
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     Layout = null;
@@ -13,48 +14,48 @@
 </head>
 <body>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Dogadaj</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DatumVrijeme)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DatumVrijeme)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Link)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Link)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Opis)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Opis)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SifraDionicaNavigation)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SifraDionicaNavigation.Naziv)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SifraRazinaOpasnostiNavigation)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SifraRazinaOpasnostiNavigation.NazivRazinaOpasnosti)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="SifraDogadaj" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
-</div>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Dogadaj</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.DatumVrijeme)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DatumVrijeme)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Link)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Link)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Opis)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Opis)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.SifraDionicaNavigation)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SifraDionicaNavigation.Naziv)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.SifraRazinaOpasnostiNavigation)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SifraRazinaOpasnostiNavigation.NazivRazinaOpasnosti)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="SifraDogadaj" />
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </form>
+    </div>
 </body>
 </html>

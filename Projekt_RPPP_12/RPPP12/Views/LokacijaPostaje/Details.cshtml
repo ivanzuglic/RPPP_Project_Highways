@@ -1,4 +1,5 @@
 ﻿@model RPPP12.Models.LokacijaPostaje
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     Layout = null;
@@ -13,21 +14,21 @@
 </head>
 <body>
 
-<div>
-    <h4>LokacijaPostaje</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NazivLokacije)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NazivLokacije)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.SifraLokacije">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        <h4>LokacijaPostaje</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.NazivLokacije)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NazivLokacije)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.SifraLokacije">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
 </body>
 </html>
