@@ -22,7 +22,7 @@
             <input type="hidden" asp-for="SifraPostaje" />
             <div class="form-group">
                 <label asp-for="SifraDionice" class="control-label"></label>
-                <input asp-for="SifraDionice" class="form-control" />
+                <select asp-for="SifraDionice" class="form-control" asp-items="ViewBag.SifraDionice"></select>
                 <span asp-validation-for="SifraDionice" class="text-danger"></span>
             </div>
             <div class="form-group">

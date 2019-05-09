@@ -32,7 +32,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="SifraDionica" class="control-label"></label>
-                <input asp-for="SifraDionica" class="form-control" />
+                <select asp-for="SifraDionica" class="form-control" asp-items="ViewBag.SifraDionica"></select>
                 <span asp-validation-for="SifraDionica" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -9,20 +9,24 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>Index</title>
 </head>
 <body>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Status)
+                @Html.DisplayNameFor(model => model.SifraUredaja)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SifraObjektaNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SifraVrsteUredajaNavigation)
@@ -34,13 +38,17 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Status)
+                @Html.DisplayFor(modelItem => item.SifraUredaja)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SifraObjektaNavigation.SifraObjekta)
+
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SifraVrsteUredajaNavigation.SifraVrsteUredaja)
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SifraVrsteUredajaNavigation.NazivVrsteUredaja)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.SifraUredaja">Edit</a> |

@@ -21,7 +21,7 @@ namespace RPPP12.Controllers
         // GET: NaplatnaPostaja
         public async Task<IActionResult> Index()
         {
-            var rPPP12Context = _context.NaplatnaPostaja.Include(n => n.SifraLokacijePostajeNavigation).Include(n => n.SifraDioniceNavigation);
+            var rPPP12Context = _context.NaplatnaPostaja.Include(n => n.SifraDioniceNavigation).Include(n => n.SifraLokacijePostajeNavigation);
             return View(await rPPP12Context.ToListAsync());
         }
 
@@ -34,6 +34,7 @@ namespace RPPP12.Controllers
             }
 
             var naplatnaPostaja = await _context.NaplatnaPostaja
+                .Include(n => n.SifraDioniceNavigation)
                 .Include(n => n.SifraLokacijePostajeNavigation)
                 .FirstOrDefaultAsync(m => m.SifraPostaje == id);
             if (naplatnaPostaja == null)
@@ -47,6 +48,7 @@ namespace RPPP12.Controllers
         // GET: NaplatnaPostaja/Create
         public IActionResult Create()
         {
+            ViewData["SifraDionice"] = new SelectList(_context.Dionica, "SifraDionice", "Naziv");
             ViewData["SifraLokacijePostaje"] = new SelectList(_context.LokacijaPostaje, "SifraLokacije", "NazivLokacije");
             return View();
         }
@@ -64,6 +66,7 @@ namespace RPPP12.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["SifraDionice"] = new SelectList(_context.Dionica, "SifraDionice", "Naziv", naplatnaPostaja.SifraDionice);
             ViewData["SifraLokacijePostaje"] = new SelectList(_context.LokacijaPostaje, "SifraLokacije", "NazivLokacije", naplatnaPostaja.SifraLokacijePostaje);
             return View(naplatnaPostaja);
         }
@@ -81,6 +84,7 @@ namespace RPPP12.Controllers
             {
                 return NotFound();
             }
+            ViewData["SifraDionice"] = new SelectList(_context.Dionica, "SifraDionice", "Naziv", naplatnaPostaja.SifraDionice);
             ViewData["SifraLokacijePostaje"] = new SelectList(_context.LokacijaPostaje, "SifraLokacije", "NazivLokacije", naplatnaPostaja.SifraLokacijePostaje);
             return View(naplatnaPostaja);
         }
@@ -117,6 +121,7 @@ namespace RPPP12.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["SifraDionice"] = new SelectList(_context.Dionica, "SifraDionice", "Naziv", naplatnaPostaja.SifraDionice);
             ViewData["SifraLokacijePostaje"] = new SelectList(_context.LokacijaPostaje, "SifraLokacije", "NazivLokacije", naplatnaPostaja.SifraLokacijePostaje);
             return View(naplatnaPostaja);
         }
@@ -130,6 +135,7 @@ namespace RPPP12.Controllers
             }
 
             var naplatnaPostaja = await _context.NaplatnaPostaja
+                .Include(n => n.SifraDioniceNavigation)
                 .Include(n => n.SifraLokacijePostajeNavigation)
                 .FirstOrDefaultAsync(m => m.SifraPostaje == id);
             if (naplatnaPostaja == null)

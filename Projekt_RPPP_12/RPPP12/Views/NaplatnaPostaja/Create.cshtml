@@ -21,8 +21,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="SifraDionice" class="control-label"></label>
-                <input asp-for="SifraDionice" class="form-control" />
-                <span asp-validation-for="SifraDionice" class="text-danger"></span>
+                <select asp-for="SifraDionice" class ="form-control" asp-items="ViewBag.SifraDionice"></select>
             </div>
             <div class="form-group">
                 <label asp-for="SifraLokacijePostaje" class="control-label"></label>

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using RPPP12.Models;
 
 namespace RPPP12.Controllers
@@ -13,23 +12,23 @@ namespace RPPP12.Controllers
     public class DionicaController : Controller
     {
         private readonly RPPP12Context _context;
-        private readonly AppSettings appData;
+    //  private readonly AppSettings appData;
 
-        public DionicaController(RPPP12Context context, IOptionsSnapshot<AppSettings> options)
+        public DionicaController(RPPP12Context context/*, IOptionsSnapshot<AppSettings> options*/)
         {
             _context = context;
-            appData = options.Value;
+      //    appData = options.Value;
         }
 
         /*public IActionResult Index()
-        {
-            var dionice = _context.Dionica
-            .AsNoTracking()
-            .OrderBy(d => d.Naziv)
-            .ToList();
-            return View("IndexSimple", dionice);
-        }
-        */
+        { 
+        var dionice = _context.Dionica
+        .AsNoTracking()
+        .OrderBy(d => d.Naziv)
+        .ToList();
+        return View("IndexSimple", dionice);
+        }*/
+
 
         // GET: Dionica
         public async Task<IActionResult> Index()

@@ -21,7 +21,7 @@ namespace RPPP12.Controllers
         // GET: Dogadaj
         public async Task<IActionResult> Index()
         {
-            var rPPP12Context = _context.Dogadaj.Include(d => d.SifraRazinaOpasnostiNavigation);
+            var rPPP12Context = _context.Dogadaj.Include(d => d.SifraDionicaNavigation).Include(d => d.SifraRazinaOpasnostiNavigation);
             return View(await rPPP12Context.ToListAsync());
         }
 
@@ -34,6 +34,7 @@ namespace RPPP12.Controllers
             }
 
             var dogadaj = await _context.Dogadaj
+                .Include(d => d.SifraDionicaNavigation)
                 .Include(d => d.SifraRazinaOpasnostiNavigation)
                 .FirstOrDefaultAsync(m => m.SifraDogadaj == id);
             if (dogadaj == null)
@@ -47,6 +48,7 @@ namespace RPPP12.Controllers
         // GET: Dogadaj/Create
         public IActionResult Create()
         {
+            ViewData["SifraDionica"] = new SelectList(_context.Dionica, "SifraDionice", "Naziv");
             ViewData["SifraRazinaOpasnosti"] = new SelectList(_context.RazinaOpasnosti, "SifraRazinaOpasnosti", "NazivRazinaOpasnosti");
             return View();
         }
@@ -64,6 +66,7 @@ namespace RPPP12.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["SifraDionica"] = new SelectList(_context.Dionica, "SifraDionice", "Naziv", dogadaj.SifraDionica);
             ViewData["SifraRazinaOpasnosti"] = new SelectList(_context.RazinaOpasnosti, "SifraRazinaOpasnosti", "NazivRazinaOpasnosti", dogadaj.SifraRazinaOpasnosti);
             return View(dogadaj);
         }
@@ -81,6 +84,7 @@ namespace RPPP12.Controllers
             {
                 return NotFound();
             }
+            ViewData["SifraDionica"] = new SelectList(_context.Dionica, "SifraDionice", "Naziv", dogadaj.SifraDionica);
             ViewData["SifraRazinaOpasnosti"] = new SelectList(_context.RazinaOpasnosti, "SifraRazinaOpasnosti", "NazivRazinaOpasnosti", dogadaj.SifraRazinaOpasnosti);
             return View(dogadaj);
         }
@@ -117,6 +121,7 @@ namespace RPPP12.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["SifraDionica"] = new SelectList(_context.Dionica, "SifraDionice", "Naziv", dogadaj.SifraDionica);
             ViewData["SifraRazinaOpasnosti"] = new SelectList(_context.RazinaOpasnosti, "SifraRazinaOpasnosti", "NazivRazinaOpasnosti", dogadaj.SifraRazinaOpasnosti);
             return View(dogadaj);
         }
@@ -130,6 +135,7 @@ namespace RPPP12.Controllers
             }
 
             var dogadaj = await _context.Dogadaj
+                .Include(d => d.SifraDionicaNavigation)
                 .Include(d => d.SifraRazinaOpasnostiNavigation)
                 .FirstOrDefaultAsync(m => m.SifraDogadaj == id);
             if (dogadaj == null)
