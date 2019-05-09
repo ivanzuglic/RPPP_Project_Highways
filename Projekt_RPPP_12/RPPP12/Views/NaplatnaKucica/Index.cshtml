@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<RPPP12.Models.NaplatnaKucica>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -13,48 +13,47 @@
     <title>Index</title>
 </head>
 <body>
-    @{
-        Html.RenderPartial("_Navbar");
-    }
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.SifraBlagajnikaNavigation)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SifraPostajaNavigation)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.VrstaNaplatneKuciceNavigation)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+    @section container {
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SifraBlagajnikaNavigation.Ime)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SifraPostajaNavigation.ImePostaje)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.VrstaNaplatneKuciceNavigation.VrstaNaplatneKucice1)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.SifraKucica">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.SifraKucica">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.SifraKucica">Delete</a>
-                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SifraBlagajnikaNavigation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SifraPostajaNavigation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.VrstaNaplatneKuciceNavigation)
+                    </th>
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>
-</body>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SifraBlagajnikaNavigation.Ime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SifraPostajaNavigation.ImePostaje)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VrstaNaplatneKuciceNavigation.VrstaNaplatneKucice1)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.SifraKucica">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.SifraKucica">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.SifraKucica">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        }
+    </body>
 </html>
