@@ -2,7 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -10,60 +10,71 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>Index</title>
 </head>
 <body>
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Ime)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Prezime)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Telefon)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SifraPostajeNavigation)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SifraVrsteZaposlenikaNavigation)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+    @section side_nav{
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a class="nav-link" href="/zaposlenik">Zaposlenici</a>
+            </li>
+
+        </ul>
+    }
+    @section container {
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Ime)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Prezime)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Telefon)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SifraPostajeNavigation.SifraPostaje)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SifraVrsteZaposlenikaNavigation.Naziv)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.SifraZaposlenika">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.SifraZaposlenika">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.SifraZaposlenika">Delete</a>
-                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Ime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Prezime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Telefon)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Ime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SifraVrsteZaposlenikaNavigation)
+                    </th>
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>
-</body>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Prezime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Telefon)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SifraPostajeNavigation.ImePostaje)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SifraVrsteZaposlenikaNavigation.Naziv)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.SifraZaposlenika">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.SifraZaposlenika">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.SifraZaposlenika">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        }
+    </body>
 </html>
