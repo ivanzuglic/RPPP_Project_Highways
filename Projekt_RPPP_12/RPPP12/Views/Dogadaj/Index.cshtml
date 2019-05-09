@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<RPPP12.Models.Dogadaj>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -13,56 +13,59 @@
     <title>Index</title>
 </head>
 <body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.SifraDionicaNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DatumVrijeme)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Link)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Opis)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SifraRazinaOpasnostiNavigation)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SifraDionicaNavigation.Naziv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DatumVrijeme)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Link)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Opis)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SifraRazinaOpasnostiNavigation.NazivRazinaOpasnosti)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.SifraDogadaj">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.SifraDogadaj">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.SifraDogadaj">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-</body>
+    @section container {
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SifraDionicaNavigation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DatumVrijeme)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Link)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Opis)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SifraRazinaOpasnostiNavigation)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SifraDionicaNavigation.Naziv)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DatumVrijeme)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Link)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Opis)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SifraRazinaOpasnostiNavigation.NazivRazinaOpasnosti)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.SifraDogadaj">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.SifraDogadaj">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.SifraDogadaj">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        }
+    </body>
 </html>

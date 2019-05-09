@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<RPPP12.Models.Dionica>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -13,62 +13,59 @@
     <title>Index</title>
 </head>
 <body>
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Naziv)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Duljina)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SifraAutocesteNavigation)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SifraKrajaNavigation)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SifraPocetkaNavigation)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Naziv)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Duljina)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SifraAutocesteNavigation.ImeAutoceste)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SifraKrajaNavigation.NazivLokacije)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SifraPocetkaNavigation.NazivLokacije)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.SifraDionice">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.SifraDionice">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.SifraDionice">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-
     @section container {
-        Bla bla bla
-    }
-
-</body>
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Naziv)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Duljina)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SifraAutocesteNavigation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SifraKrajaNavigation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SifraPocetkaNavigation)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Naziv)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Duljina)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SifraAutocesteNavigation.ImeAutoceste)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SifraKrajaNavigation.NazivLokacije)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SifraPocetkaNavigation.NazivLokacije)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.SifraDionice">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.SifraDionice">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.SifraDionice">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        }
+    </body>
 </html>
