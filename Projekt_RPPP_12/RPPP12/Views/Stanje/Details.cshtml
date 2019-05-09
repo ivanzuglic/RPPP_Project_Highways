@@ -1,0 +1,57 @@
+﻿@model RPPP12.Models.Stanje
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>Stanje</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VrijemePocetka)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.VrijemePocetka)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.VrijemeZavrsetka)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.VrijemeZavrsetka)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Opis)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Opis)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraDogadajNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SifraDogadajNavigation.SifraDogadaj)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraZabranaNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SifraZabranaNavigation.SifraZabrana)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SifraStanje">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>

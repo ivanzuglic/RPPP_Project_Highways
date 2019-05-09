@@ -80,6 +80,86 @@ namespace RPPP12
                     name: "zaposlenik",
                     template: "{controller=Zaposlenik}/{action=Index}"
                 );
+                routes.MapRoute(
+                    name: "alarm",
+                    template: "{controller=Alarm}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "autocesta",
+                    template: "{controller=Autocesta}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "cjenik",
+                    template: "{controller=Cjenik}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "kategorijaScenarija",
+                    template: "{controller=KategorijaScenarija}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "kategorijaVozila",
+                    template: "{controller=KategorijaVozila}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "lokacijaAutoceste",
+                    template: "{controller=LokacijaAutoceste}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "lokacijaPostaje",
+                    template: "{controller=LokacijaPostaje}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "nacinPlacanja",
+                    template: "{controller=NacinPlacanja}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "objekt",
+                    template: "{controller=Objekt}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "racun",
+                    template: "{controller=Racun}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "razinaOpasnosti",
+                    template: "{controller=RazinaOpasnosti}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "scenarij",
+                    template: "{controller=Scenarij}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "sjediste",
+                    template: "{controller=Sjediste}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "stanje",
+                    template: "{controller=Stanje}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "sustavNaplate",
+                    template: "{controller=SustavNaplate}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "vrstaNaplatneKucice",
+                    template: "{controller=VrstaNaplatneKucice}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "vrstaObjekta",
+                    template: "{controller=VrstaObjekta}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "vrstaUredaja",
+                    template: "{controller=VrstaUredaja}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "vrstaZaposlenika",
+                    template: "{controller=VrstaZaposlenika}/{action=Index}"
+                );
+                routes.MapRoute(
+                    name: "zabrana",
+                    template: "{controller=Zabrana}/{action=Index}"
+                );
             });  
         }
     }

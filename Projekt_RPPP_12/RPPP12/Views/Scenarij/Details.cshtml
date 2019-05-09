@@ -1,0 +1,51 @@
+﻿@model RPPP12.Models.Scenarij
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>Scenarij</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NazivScenarija)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NazivScenarija)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Procedura)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Procedura)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraVrsteObjekta)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SifraVrsteObjekta)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraVrsteScenarijaNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SifraVrsteScenarijaNavigation.NazivKategorijeScenarija)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SifraScenarija">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>

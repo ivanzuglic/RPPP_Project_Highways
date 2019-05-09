@@ -13,6 +13,14 @@
     <title>Index</title>
 </head>
 <body>
+    @section side_nav{
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a class="nav-link" href="/objekt">Objekti</a>
+            </li>
+
+        </ul>
+    }
     @section container {
         <p>
             <a asp-action="Create">Create New</a>
@@ -66,6 +74,6 @@
                 }
             </tbody>
         </table>
-        }
-    </body>
+    }
+</body>
 </html>

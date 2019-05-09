@@ -1,0 +1,60 @@
+﻿@model RPPP12.Models.Racun
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Racun</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RegistarskaOznaka)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RegistarskaOznaka)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumVrijeme)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DatumVrijeme)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraKategorijaVozilaNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SifraKategorijaVozilaNavigation.Opis)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraKucicaNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SifraKucicaNavigation.SifraKucica)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraNacinPlacanjaNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SifraNacinPlacanjaNavigation.NacinPlacanja1)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="SifraRacun" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
+</body>
+</html>

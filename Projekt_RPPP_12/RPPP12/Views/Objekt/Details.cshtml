@@ -1,0 +1,39 @@
+﻿@model RPPP12.Models.Objekt
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>Objekt</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraDioniceNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SifraDioniceNavigation.Naziv)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraVrstaObjektaNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SifraVrstaObjektaNavigation.NazivObjekta)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SifraObjekta">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>

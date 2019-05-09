@@ -5,26 +5,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using RPPP12.Models;
 
-namespace RPPP12.Models
+namespace RPPP12.Controllers
 {
-    public class ZaposleniksController : Controller
+    public class ZaposlenikController : Controller
     {
         private readonly RPPP12Context _context;
 
-        public ZaposleniksController(RPPP12Context context)
+        public ZaposlenikController(RPPP12Context context)
         {
             _context = context;
         }
 
-        // GET: Zaposleniks
+        // GET: Zaposlenik
         public async Task<IActionResult> Index()
         {
             var rPPP12Context = _context.Zaposlenik.Include(z => z.SifraPostajeNavigation).Include(z => z.SifraVrsteZaposlenikaNavigation);
             return View(await rPPP12Context.ToListAsync());
         }
 
-        // GET: Zaposleniks/Details/5
+        // GET: Zaposlenik/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,7 +45,7 @@ namespace RPPP12.Models
             return View(zaposlenik);
         }
 
-        // GET: Zaposleniks/Create
+        // GET: Zaposlenik/Create
         public IActionResult Create()
         {
             ViewData["SifraPostaje"] = new SelectList(_context.NaplatnaPostaja, "SifraPostaje", "SifraPostaje");
@@ -52,7 +53,7 @@ namespace RPPP12.Models
             return View();
         }
 
-        // POST: Zaposleniks/Create
+        // POST: Zaposlenik/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -70,7 +71,7 @@ namespace RPPP12.Models
             return View(zaposlenik);
         }
 
-        // GET: Zaposleniks/Edit/5
+        // GET: Zaposlenik/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -88,7 +89,7 @@ namespace RPPP12.Models
             return View(zaposlenik);
         }
 
-        // POST: Zaposleniks/Edit/5
+        // POST: Zaposlenik/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -125,7 +126,7 @@ namespace RPPP12.Models
             return View(zaposlenik);
         }
 
-        // GET: Zaposleniks/Delete/5
+        // GET: Zaposlenik/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -145,7 +146,7 @@ namespace RPPP12.Models
             return View(zaposlenik);
         }
 
-        // POST: Zaposleniks/Delete/5
+        // POST: Zaposlenik/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
