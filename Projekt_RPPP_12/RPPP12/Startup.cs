@@ -76,6 +76,10 @@ namespace RPPP12
                     name: "upravitelj",
                     template: "{controller=Upravitelj}/{action=Index}"
                 );
+                routes.MapRoute(
+                    name: "zaposlenik",
+                    template: "{controller=Zaposlenik}/{action=Index}"
+                );
             });  
         }
     }

@@ -1,0 +1,57 @@
+﻿@model RPPP12.Models.Zaposlenik
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>Zaposlenik</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Prezime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Prezime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Telefon)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraPostajeNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SifraPostajeNavigation.SifraPostaje)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraVrsteZaposlenikaNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SifraVrsteZaposlenikaNavigation.Naziv)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SifraZaposlenika">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>
