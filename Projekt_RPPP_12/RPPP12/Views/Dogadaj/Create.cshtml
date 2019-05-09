@@ -2,7 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Create_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -10,45 +10,54 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>Create</title>
 </head>
 <body>
+    @section side_nav{
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a class="nav-link" href="/stanje">Stanja</a>
+            </li>
 
-    <h4>Dogadaj</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="Create">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Link" class="control-label"></label>
-                    <input asp-for="Link" class="form-control" />
-                    <span asp-validation-for="Link" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="SifraRazinaOpasnosti" class="control-label"></label>
-                    <select asp-for="SifraRazinaOpasnosti" class="form-control" asp-items="ViewBag.SifraRazinaOpasnosti"></select>
-                </div>
-                <div class="form-group">
-                    <label asp-for="SifraDionica" class="control-label"></label>
-                    <select asp-for="SifraDionica" class="form-control" asp-items="ViewBag.SifraDionica"></select>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Opis" class="control-label"></label>
-                    <input asp-for="Opis" class="form-control" />
-                    <span asp-validation-for="Opis" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </form>
+        </ul>
+    }
+    @section container {
+        <h4>Dogadaj</h4>
+        <hr />
+        <div class="row" >
+            <div class="input-group mb-3">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Link" class="control-label"></label>
+                        <input asp-for="Link" class="form-control" />
+                        <span asp-validation-for="Link" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SifraRazinaOpasnosti" class="control-label"></label>
+                        <select asp-for="SifraRazinaOpasnosti" class="form-control" asp-items="ViewBag.SifraRazinaOpasnosti"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SifraDionica" class="control-label"></label>
+                        <select asp-for="SifraDionica" class="form-control" asp-items="ViewBag.SifraDionica"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Opis" class="control-label"></label>
+                        <input asp-for="Opis" class="form-control" />
+                        <span asp-validation-for="Opis" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <div>
-        <a asp-action="Index">Back to List</a>
-    </div>
-
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    }
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     }
