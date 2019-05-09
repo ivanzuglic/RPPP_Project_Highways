@@ -60,6 +60,16 @@
                             <a asp-action="Delete" asp-route-id="@item.SifraPostaje">Delete</a>
                         </td>
                     </tr>
+                    <tr>
+                        <td style="padding-left:10%;"> Zaposlenici:
+
+                            @foreach(var zap in item.Zaposlenik)
+                            {
+                                @zap.Ime
+                            }
+
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>

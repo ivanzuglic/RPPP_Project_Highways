@@ -21,7 +21,7 @@ namespace RPPP12.Controllers
         // GET: NaplatnaPostaja
         public async Task<IActionResult> Index()
         {
-            var rPPP12Context = _context.NaplatnaPostaja.Include(n => n.SifraDioniceNavigation).Include(n => n.SifraLokacijePostajeNavigation);
+            var rPPP12Context = _context.NaplatnaPostaja.Include(n => n.SifraDioniceNavigation).Include(n => n.SifraLokacijePostajeNavigation).Include(n => n.Zaposlenik);
             return View(await rPPP12Context.ToListAsync());
         }
 
