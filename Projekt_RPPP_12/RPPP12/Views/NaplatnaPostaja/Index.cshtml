@@ -61,11 +61,12 @@
                         </td>
                     </tr>
                     <tr>
-                        <td style="padding-left:10%;"> Zaposlenici:
+                        <td style="padding-left:10%;">
+                            Zaposlenici:
 
-                            @foreach(var zap in item.Zaposlenik)
+                            @foreach (var zap in item.Zaposlenik)
                             {
-                                @zap.Ime
+                                @zap.Ime <text>&nbsp;</text> @zap.Prezime@((zap != item.Zaposlenik.Last()) ? "," : "") <text>&nbsp;</text>
                             }
 
                         </td>
