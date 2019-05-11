@@ -24,74 +24,76 @@
     }
     @section container {
         <div>
-            <h4>NaplatnaPostaja</h4>
+            <h4>Naplatna postaja</h4>
             <hr />
             <dl class="dl-horizontal">
                 <dt>
-                    @Html.DisplayNameFor(model => model.ImePostaje)
+                    Ime postaje
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => model.ImePostaje)
                 </dd>
                 <dt>
-                    @Html.DisplayNameFor(model => model.SifraDioniceNavigation)
+                    Dionica
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => model.SifraDioniceNavigation.Naziv)
                 </dd>
                 <dt>
-                    @Html.DisplayNameFor(model => model.SifraLokacijePostajeNavigation)
+                    Lokacija postaje
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => model.SifraLokacijePostajeNavigation.NazivLokacije)
                 </dd>
-
-                
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>
-                                Ime
-                            </th>
-                            <th>
-                                Prezime
-                            </th>
-                            <th>
-                                Telefon
-                            </th>
-                            <th>
-                                Ime postaje
-                            </th>
-                            <th>
-                                Vrsta zaposlenika
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.Zaposlenik)
-                        {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Ime)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Prezime)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Telefon)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.SifraPostajeNavigation.ImePostaje)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.SifraVrsteZaposlenikaNavigation.Naziv)
-                            </td>
-                        </tr>                              
-                        }
-                    </tbody>
-                </table>
-                
+                <dt>
+                    Zaposlenici
+                </dt>
+                <dd>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Ime
+                                </th>
+                                <th>
+                                    Prezime
+                                </th>
+                                <th>
+                                    Telefon
+                                </th>
+                                <th>
+                                    Ime postaje
+                                </th>
+                                <th>
+                                    Vrsta zaposlenika
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Zaposlenik)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Ime)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Prezime)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Telefon)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SifraPostajeNavigation.ImePostaje)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SifraVrsteZaposlenikaNavigation.Naziv)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </dd>
             </dl>
         </div>
         <div>
