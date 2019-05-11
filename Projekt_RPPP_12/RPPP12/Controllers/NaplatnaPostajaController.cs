@@ -37,6 +37,7 @@ namespace RPPP12.Controllers
                 .Include(n => n.SifraDioniceNavigation)
                 .Include(n => n.SifraLokacijePostajeNavigation)
                 .Include(n => n.Zaposlenik)
+                .ThenInclude(z => z.SifraVrsteZaposlenikaNavigation)
                 .FirstOrDefaultAsync(m => m.SifraPostaje == id);
             if (naplatnaPostaja == null)
             {
