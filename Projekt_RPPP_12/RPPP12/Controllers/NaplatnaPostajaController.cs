@@ -36,6 +36,7 @@ namespace RPPP12.Controllers
             var naplatnaPostaja = await _context.NaplatnaPostaja
                 .Include(n => n.SifraDioniceNavigation)
                 .Include(n => n.SifraLokacijePostajeNavigation)
+                .Include(n => n.Zaposlenik)
                 .FirstOrDefaultAsync(m => m.SifraPostaje == id);
             if (naplatnaPostaja == null)
             {
