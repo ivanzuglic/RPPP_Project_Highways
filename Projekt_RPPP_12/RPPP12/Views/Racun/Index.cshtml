@@ -2,7 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -13,57 +13,67 @@
     <title>Index</title>
 </head>
 <body>
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.RegistarskaOznaka)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DatumVrijeme)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SifraKategorijaVozilaNavigation)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SifraKucicaNavigation)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SifraNacinPlacanjaNavigation)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.RegistarskaOznaka)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DatumVrijeme)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SifraKategorijaVozilaNavigation.Opis)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SifraKucicaNavigation.SifraKucica)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SifraNacinPlacanjaNavigation.NacinPlacanja1)
-    </td>
-    <td>
-        <a asp-action="Edit" asp-route-id="@item.SifraRacun">Edit</a> |
-        <a asp-action="Details" asp-route-id="@item.SifraRacun">Details</a> |
-        <a asp-action="Delete" asp-route-id="@item.SifraRacun">Delete</a>
-    </td>
-</tr>
-}
-        </tbody>
-    </table>
-</body>
+    @section side_nav{
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a class="nav-link" href="/racun">Računi</a>
+            </li>
+
+        </ul>
+    }
+    @section container {
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RegistarskaOznaka)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DatumVrijeme)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SifraKategorijaVozilaNavigation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SifraKucicaNavigation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SifraNacinPlacanjaNavigation)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RegistarskaOznaka)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DatumVrijeme)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SifraKategorijaVozilaNavigation.Opis)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SifraKucicaNavigation.SifraKucica)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SifraNacinPlacanjaNavigation.NacinPlacanja1)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.SifraRacun">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.SifraRacun">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.SifraRacun">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        }
+    </body>
 </html>

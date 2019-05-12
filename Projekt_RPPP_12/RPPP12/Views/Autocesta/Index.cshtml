@@ -2,7 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -14,69 +14,79 @@
     <title>Index</title>
 </head>
 <body>
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-    <table class="table table-striped" >
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.ImeAutoceste)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Nadimak)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Kilometraza)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SifraNacinaPlacanjaNavigation)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SifraPocetkaNavigation)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SifraUpraviteljaNavigation)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SifraZavrsetkaNavigation)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+    @section side_nav{
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a class="nav-link" href="/autocesta">Autoceste</a>
+            </li>
+
+        </ul>
+    }
+    @section container {
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ImeAutoceste)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nadimak)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Kilometraza)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SifraNacinaPlacanjaNavigation.NacinPlacanja)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SifraPocetkaNavigation.ImeLokacije)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SifraUpraviteljaNavigation.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SifraZavrsetkaNavigation.ImeLokacije)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.SifraAutoceste">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.SifraAutoceste">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.SifraAutoceste">Delete</a>
-                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ImeAutoceste)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nadimak)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Kilometraza)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SifraNacinaPlacanjaNavigation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SifraPocetkaNavigation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SifraUpraviteljaNavigation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SifraZavrsetkaNavigation)
+                    </th>
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>
-</body>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ImeAutoceste)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nadimak)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Kilometraza)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SifraNacinaPlacanjaNavigation.NacinPlacanja)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SifraPocetkaNavigation.ImeLokacije)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SifraUpraviteljaNavigation.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SifraZavrsetkaNavigation.ImeLokacije)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.SifraAutoceste">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.SifraAutoceste">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.SifraAutoceste">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        }
+    </body>
 </html>

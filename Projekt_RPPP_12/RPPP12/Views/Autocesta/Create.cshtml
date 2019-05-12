@@ -2,8 +2,9 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Create_Layout.cshtml";
 }
+
 
 <!DOCTYPE html>
 
@@ -13,62 +14,69 @@
     <title>Create</title>
 </head>
 <body>
+    @section side_nav{
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a class="nav-link" href="/autocesta">Autoceste</a>
+            </li>
 
-    <h4>Autocesta</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="Create">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="SifraAutoceste" class="control-label"></label>
-                    <input asp-for="SifraAutoceste" class="form-control" />
-                    <span asp-validation-for="SifraAutoceste" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="ImeAutoceste" class="control-label"></label>
-                    <input asp-for="ImeAutoceste" class="form-control" />
-                    <span asp-validation-for="ImeAutoceste" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="SifraPocetka" class="control-label"></label>
-                    <select asp-for="SifraPocetka" class="form-control" asp-items="ViewBag.SifraPocetka"></select>
-                </div>
-                <div class="form-group">
-                    <label asp-for="SifraZavrsetka" class="control-label"></label>
-                    <select asp-for="SifraZavrsetka" class="form-control" asp-items="ViewBag.SifraZavrsetka"></select>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Nadimak" class="control-label"></label>
-                    <input asp-for="Nadimak" class="form-control" />
-                    <span asp-validation-for="Nadimak" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="SifraUpravitelja" class="control-label"></label>
-                    <select asp-for="SifraUpravitelja" class="form-control" asp-items="ViewBag.SifraUpravitelja"></select>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Kilometraza" class="control-label"></label>
-                    <input asp-for="Kilometraza" class="form-control" />
-                    <span asp-validation-for="Kilometraza" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="SifraNacinaPlacanja" class="control-label"></label>
-                    <select asp-for="SifraNacinaPlacanja" class="form-control" asp-items="ViewBag.SifraNacinaPlacanja"></select>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div>
-        <a asp-action="Index">Back to List</a>
-    </div>
-
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        </ul>
     }
-</body>
+    @section container {
+        <hr />
+        <div class="row">
+            <div class="input-group mb-3">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="SifraAutoceste" class="control-label"></label>
+                        <input asp-for="SifraAutoceste" class="form-control" />
+                        <span asp-validation-for="SifraAutoceste" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImeAutoceste" class="control-label"></label>
+                        <input asp-for="ImeAutoceste" class="form-control" />
+                        <span asp-validation-for="ImeAutoceste" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SifraPocetka" class="control-label"></label>
+                        <select asp-for="SifraPocetka" class="form-control" asp-items="ViewBag.SifraPocetka"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SifraZavrsetka" class="control-label"></label>
+                        <select asp-for="SifraZavrsetka" class="form-control" asp-items="ViewBag.SifraZavrsetka"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Nadimak" class="control-label"></label>
+                        <input asp-for="Nadimak" class="form-control" />
+                        <span asp-validation-for="Nadimak" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SifraUpravitelja" class="control-label"></label>
+                        <select asp-for="SifraUpravitelja" class="form-control" asp-items="ViewBag.SifraUpravitelja"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Kilometraza" class="control-label"></label>
+                        <input asp-for="Kilometraza" class="form-control" />
+                        <span asp-validation-for="Kilometraza" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SifraNacinaPlacanja" class="control-label"></label>
+                        <select asp-for="SifraNacinaPlacanja" class="form-control" asp-items="ViewBag.SifraNacinaPlacanja"></select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        }
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
+    </body>
 </html>

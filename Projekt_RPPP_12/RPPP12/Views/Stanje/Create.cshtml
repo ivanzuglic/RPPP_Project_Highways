@@ -2,8 +2,9 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Create_Layout.cshtml";
 }
+
 
 <!DOCTYPE html>
 
@@ -13,44 +14,52 @@
     <title>Create</title>
 </head>
 <body>
+    @section side_nav{
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a class="nav-link" href="/stanje">Stanja</a>
+            </li>
 
-    <h4>Stanje</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="Create">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="VrijemeZavrsetka" class="control-label"></label>
-                    <input asp-for="VrijemeZavrsetka" class="form-control" />
-                    <span asp-validation-for="VrijemeZavrsetka" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="SifraDogadaj" class="control-label"></label>
-                    <select asp-for="SifraDogadaj" class="form-control" asp-items="ViewBag.SifraDogadaj"></select>
-                </div>
-                <div class="form-group">
-                    <label asp-for="SifraZabrana" class="control-label"></label>
-                    <select asp-for="SifraZabrana" class="form-control" asp-items="ViewBag.SifraZabrana"></select>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Opis" class="control-label"></label>
-                    <input asp-for="Opis" class="form-control" />
-                    <span asp-validation-for="Opis" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div>
-        <a asp-action="Index">Back to List</a>
-    </div>
-
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        </ul>
     }
-</body>
+    @section container {
+        <h4>Stanje</h4>
+        <hr />
+        <div class="row">
+            <div class="input-group mb-3">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="VrijemeZavrsetka" class="control-label"></label>
+                        <input asp-for="VrijemeZavrsetka" class="form-control" />
+                        <span asp-validation-for="VrijemeZavrsetka" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SifraDogadaj" class="control-label"></label>
+                        <select asp-for="SifraDogadaj" class="form-control" asp-items="ViewBag.SifraDogadaj"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SifraZabrana" class="control-label"></label>
+                        <select asp-for="SifraZabrana" class="form-control" asp-items="ViewBag.SifraZabrana"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Opis" class="control-label"></label>
+                        <input asp-for="Opis" class="form-control" />
+                        <span asp-validation-for="Opis" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        }
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
+    </body>
 </html>
