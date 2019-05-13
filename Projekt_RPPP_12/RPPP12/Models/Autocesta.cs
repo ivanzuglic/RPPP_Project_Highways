@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace RPPP12.Models
 {
@@ -20,8 +21,11 @@ namespace RPPP12.Models
         public int? SifraNacinaPlacanja { get; set; }
 
         public SustavNaplate SifraNacinaPlacanjaNavigation { get; set; }
+        [Display(Name = "Početak")]
         public LokacijaAutoceste SifraPocetkaNavigation { get; set; }
+        [Display(Name = "Upravitelj")]
         public Upravitelj SifraUpraviteljaNavigation { get; set; }
+        [Display(Name = "Kraj")]
         public LokacijaAutoceste SifraZavrsetkaNavigation { get; set; }
         public ICollection<Dionica> Dionica { get; set; }
     }

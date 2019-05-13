@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace RPPP12.Models
 {
@@ -11,7 +12,9 @@ namespace RPPP12.Models
             AutocestaSifraZavrsetkaNavigation = new HashSet<Autocesta>();
         }
 
+        [Display(Name = "Šifra lokacije")]
         public int SifraLokacije { get; set; }
+        [Display(Name = "Ime lokacije")]
         public string ImeLokacije { get; set; }
 
         public ICollection<Autocesta> AutocestaSifraPocetkaNavigation { get; set; }
