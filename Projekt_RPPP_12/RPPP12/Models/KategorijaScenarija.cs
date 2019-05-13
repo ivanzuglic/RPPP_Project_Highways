@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace RPPP12.Models
 {
@@ -11,6 +12,7 @@ namespace RPPP12.Models
         }
 
         public int SifraKategorijeScenarija { get; set; }
+        [Display(Name = "Kategorjia")]
         public string NazivKategorijeScenarija { get; set; }
 
         public ICollection<Scenarij> Scenarij { get; set; }

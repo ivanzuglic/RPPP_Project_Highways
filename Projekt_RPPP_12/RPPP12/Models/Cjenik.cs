@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace RPPP12.Models
 {
@@ -9,7 +10,9 @@ namespace RPPP12.Models
         public int SifraKategorijaVozila { get; set; }
         public double Cijena { get; set; }
 
+        [Display(Name = "Kategorija vozila")]
         public KategorijaVozila SifraKategorijaVozilaNavigation { get; set; }
+        [Display(Name = "Šifra kućice")]
         public NaplatnaKucica SifraKucicaNavigation { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace RPPP12.Models
 {
@@ -12,7 +13,9 @@ namespace RPPP12.Models
             NaplatnaPostaja = new HashSet<NaplatnaPostaja>();
         }
 
+        [Display(Name = "Šifra lokacije")]
         public int SifraLokacije { get; set; }
+        [Display(Name = "Naziv lokacije")]
         public string NazivLokacije { get; set; }
 
         public ICollection<Dionica> DionicaSifraKrajaNavigation { get; set; }
