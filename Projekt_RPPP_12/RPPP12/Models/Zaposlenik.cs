@@ -18,8 +18,8 @@ namespace RPPP12.Models
         public string Prezime { get; set; }
         [Display(Name = "Telefon")]
         public string Telefon { get; set; }
-        public int SifraPostaje { get; set; }
-        public int SifraVrsteZaposlenika { get; set; }
+        public int? SifraPostaje { get; set; }
+        public int? SifraVrsteZaposlenika { get; set; }
 
         [Display(Name = "Ime postaje")]
         public NaplatnaPostaja SifraPostajeNavigation { get; set; }

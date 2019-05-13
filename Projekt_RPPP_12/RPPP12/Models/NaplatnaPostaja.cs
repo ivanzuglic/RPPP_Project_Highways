@@ -13,8 +13,8 @@ namespace RPPP12.Models
         }
 
         public int SifraPostaje { get; set; }
-        public int SifraDionice { get; set; }
-        public int SifraLokacijePostaje { get; set; }
+        public int? SifraDionice { get; set; }
+        public int? SifraLokacijePostaje { get; set; }
         [Display(Name = "Ime postaje")]
         public string ImePostaje { get; set; }
 

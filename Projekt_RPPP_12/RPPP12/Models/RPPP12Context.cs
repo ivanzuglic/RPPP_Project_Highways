@@ -330,6 +330,7 @@ namespace RPPP12.Models
                 entity.HasOne(d => d.SifraPostajaNavigation)
                     .WithMany(p => p.NaplatnaKucica)
                     .HasForeignKey(d => d.SifraPostaja)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_NaplatnaKucica_NaplatnaPostaja");
 
                 entity.HasOne(d => d.VrstaNaplatneKuciceNavigation)
@@ -357,13 +358,11 @@ namespace RPPP12.Models
                 entity.HasOne(d => d.SifraDioniceNavigation)
                     .WithMany(p => p.NaplatnaPostaja)
                     .HasForeignKey(d => d.SifraDionice)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_NaplatnaPostaja_Dionica");
 
                 entity.HasOne(d => d.SifraLokacijePostajeNavigation)
                     .WithMany(p => p.NaplatnaPostaja)
                     .HasForeignKey(d => d.SifraLokacijePostaje)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_NaplatnaPostaja_LokacijaPostaje");
             });
 
@@ -372,6 +371,10 @@ namespace RPPP12.Models
                 entity.HasKey(e => e.SifraObjekta);
 
                 entity.Property(e => e.SifraObjekta).HasColumnName("sifraObjekta");
+
+                entity.Property(e => e.ImeObjekta)
+                    .HasColumnName("imeObjekta")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.SifraDionice).HasColumnName("sifraDionice");
 
@@ -687,13 +690,11 @@ namespace RPPP12.Models
                 entity.HasOne(d => d.SifraPostajeNavigation)
                     .WithMany(p => p.Zaposlenik)
                     .HasForeignKey(d => d.SifraPostaje)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Zaposlenik_NaplatnaPostaja");
 
                 entity.HasOne(d => d.SifraVrsteZaposlenikaNavigation)
                     .WithMany(p => p.Zaposlenik)
                     .HasForeignKey(d => d.SifraVrsteZaposlenika)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Zaposlenik_VrstaZaposlenika");
             });
         }

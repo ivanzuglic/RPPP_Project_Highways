@@ -13,7 +13,7 @@ namespace RPPP12.Models
         }
 
         public int SifraKucica { get; set; }
-        public int SifraPostaja { get; set; }
+        public int? SifraPostaja { get; set; }
         public int? SifraBlagajnika { get; set; }
         public string VrstaNaplatneKucice { get; set; }
 
