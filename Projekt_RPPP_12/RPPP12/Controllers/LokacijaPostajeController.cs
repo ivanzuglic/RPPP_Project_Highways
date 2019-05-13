@@ -59,6 +59,7 @@ namespace RPPP12.Controllers
             {
                 _context.Add(lokacijaPostaje);
                 await _context.SaveChangesAsync();
+                TempData["create"] = "Create";
                 return RedirectToAction(nameof(Index));
             }
             return View(lokacijaPostaje);
@@ -141,6 +142,7 @@ namespace RPPP12.Controllers
             var lokacijaPostaje = await _context.LokacijaPostaje.FindAsync(id);
             _context.LokacijaPostaje.Remove(lokacijaPostaje);
             await _context.SaveChangesAsync();
+            TempData["delete"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 

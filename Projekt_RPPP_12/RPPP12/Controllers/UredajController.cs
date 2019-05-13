@@ -101,6 +101,7 @@ namespace RPPP12.Controllers
             {
                 _context.Add(uredaj);
                 await _context.SaveChangesAsync();
+                TempData["create"] = "Create";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["SifraObjekta"] = new SelectList(_context.Objekt, "SifraObjekta", "SifraObjekta", uredaj.SifraObjekta);
@@ -191,6 +192,7 @@ namespace RPPP12.Controllers
             var uredaj = await _context.Uredaj.FindAsync(id);
             _context.Uredaj.Remove(uredaj);
             await _context.SaveChangesAsync();
+            TempData["delete"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 

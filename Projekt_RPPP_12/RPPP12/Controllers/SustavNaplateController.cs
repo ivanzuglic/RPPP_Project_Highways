@@ -59,6 +59,7 @@ namespace RPPP12.Controllers
             {
                 _context.Add(sustavNaplate);
                 await _context.SaveChangesAsync();
+                TempData["create"] = "Create";
                 return RedirectToAction(nameof(Index));
             }
             return View(sustavNaplate);
@@ -141,6 +142,7 @@ namespace RPPP12.Controllers
             var sustavNaplate = await _context.SustavNaplate.FindAsync(id);
             _context.SustavNaplate.Remove(sustavNaplate);
             await _context.SaveChangesAsync();
+            TempData["delete"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 
