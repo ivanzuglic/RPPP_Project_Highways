@@ -68,6 +68,7 @@ namespace RPPP12.Controllers
             {
                 _context.Add(autocesta);
                 await _context.SaveChangesAsync();
+                TempData["create"] = "Create";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["SifraNacinaPlacanja"] = new SelectList(_context.SustavNaplate, "SifraNacinaPlacanja", "NacinPlacanja", autocesta.SifraNacinaPlacanja);
@@ -166,6 +167,7 @@ namespace RPPP12.Controllers
             var autocesta = await _context.Autocesta.FindAsync(id);
             _context.Autocesta.Remove(autocesta);
             await _context.SaveChangesAsync();
+            TempData["delete"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 

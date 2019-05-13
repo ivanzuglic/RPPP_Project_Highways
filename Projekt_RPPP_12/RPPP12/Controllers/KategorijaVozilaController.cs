@@ -59,6 +59,7 @@ namespace RPPP12.Controllers
             {
                 _context.Add(kategorijaVozila);
                 await _context.SaveChangesAsync();
+                TempData["create"] = "Create";
                 return RedirectToAction(nameof(Index));
             }
             return View(kategorijaVozila);
@@ -141,6 +142,7 @@ namespace RPPP12.Controllers
             var kategorijaVozila = await _context.KategorijaVozila.FindAsync(id);
             _context.KategorijaVozila.Remove(kategorijaVozila);
             await _context.SaveChangesAsync();
+            TempData["delete"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 

@@ -59,6 +59,7 @@ namespace RPPP12.Controllers
             {
                 _context.Add(zabrana);
                 await _context.SaveChangesAsync();
+                TempData["create"] = "Create";
                 return RedirectToAction(nameof(Index));
             }
             return View(zabrana);
@@ -141,6 +142,7 @@ namespace RPPP12.Controllers
             var zabrana = await _context.Zabrana.FindAsync(id);
             _context.Zabrana.Remove(zabrana);
             await _context.SaveChangesAsync();
+            TempData["delete"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 
