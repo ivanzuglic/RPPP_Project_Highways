@@ -18,6 +18,15 @@
             <li class="list-group-item">
                 <a class="nav-link" href="/scenarij">Scenariji</a>
             </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/alarm">Alarmi</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/kategorijaScenarija">Kategorije scenarija</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/vrstaUredaja">Vrste uređaja</a>
+            </li>
 
         </ul>
     }
@@ -53,13 +62,13 @@
                 </form>
             </div>
         </div>
-        }
-        <div>
-            <a asp-action="Index">Back to List</a>
-        </div>
+    }
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
 
-        @section Scripts {
-            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-        }
-    </body>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</body>
 </html>
