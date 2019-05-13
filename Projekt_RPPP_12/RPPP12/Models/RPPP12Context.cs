@@ -43,14 +43,14 @@ namespace RPPP12.Models
         public virtual DbSet<Zabrana> Zabrana { get; set; }
         public virtual DbSet<Zaposlenik> Zaposlenik { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+      /*  protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Server=rppp.fer.hr,3000;Database=RPPP12;User Id=rppp12;Password=snoopy#012");
             }
-        }
+        }*/
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
