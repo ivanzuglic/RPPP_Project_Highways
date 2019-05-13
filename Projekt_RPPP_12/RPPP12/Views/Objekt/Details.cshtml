@@ -2,7 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -13,28 +13,42 @@
     <title>Details</title>
 </head>
 <body>
-
-    <div>
-        <h4>Objekt</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.SifraDioniceNavigation)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.SifraDioniceNavigation.Naziv)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.SifraVrstaObjektaNavigation)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.SifraVrstaObjektaNavigation.NazivObjekta)
-            </dd>
-        </dl>
-    </div>
-    <div>
-        <a asp-action="Edit" asp-route-id="@Model.SifraObjekta">Edit</a> |
-        <a asp-action="Index">Back to List</a>
-    </div>
-</body>
+    @section side_nav{
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a class="nav-link" href="/objekt">Objekti</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/vrstaObjekta">Vrste objekata</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/lokacijaPostaje">Lokacije postaja</a>
+            </li>
+        </ul>
+    }
+    @section container {
+        <div>
+            <h4>Objekt</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.SifraDioniceNavigation)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SifraDioniceNavigation.Naziv)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SifraVrstaObjektaNavigation)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SifraVrstaObjektaNavigation.NazivObjekta)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.SifraObjekta">Edit</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    }
+    </body>
 </html>

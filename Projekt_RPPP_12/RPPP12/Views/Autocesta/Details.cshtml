@@ -2,7 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -13,58 +13,76 @@
     <title>Details</title>
 </head>
 <body>
+    @section side_nav{
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a class="nav-link" href="/autocesta">Autoceste</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/sjediste">Sjedište</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/lokacijaAutoceste">Lokacija</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/sustavNaplate">Sustav naplate</a>
+            </li>
 
-    <div>
-        <h4>Autocesta</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.ImeAutoceste)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.ImeAutoceste)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Nadimak)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Nadimak)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Kilometraza)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Kilometraza)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.SifraNacinaPlacanjaNavigation)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.SifraNacinaPlacanjaNavigation.NacinPlacanja)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.SifraPocetkaNavigation)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.SifraPocetkaNavigation.ImeLokacije)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.SifraUpraviteljaNavigation)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.SifraUpraviteljaNavigation.Email)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.SifraZavrsetkaNavigation)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.SifraZavrsetkaNavigation.ImeLokacije)
-            </dd>
-        </dl>
-    </div>
-    <div>
-        <a asp-action="Edit" asp-route-id="@Model.SifraAutoceste">Edit</a> |
-        <a asp-action="Index">Back to List</a>
-    </div>
-</body>
+        </ul>
+    }
+    @section container {
+        <div>
+            <h4>Autocesta</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ImeAutoceste)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ImeAutoceste)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Nadimak)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Nadimak)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Kilometraza)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Kilometraza)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SifraNacinaPlacanjaNavigation)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SifraNacinaPlacanjaNavigation.NacinPlacanja)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SifraPocetkaNavigation)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SifraPocetkaNavigation.ImeLokacije)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SifraUpraviteljaNavigation)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SifraUpraviteljaNavigation.Email)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SifraZavrsetkaNavigation)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SifraZavrsetkaNavigation.ImeLokacije)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.SifraAutoceste">Edit</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    }
+    </body>
 </html>

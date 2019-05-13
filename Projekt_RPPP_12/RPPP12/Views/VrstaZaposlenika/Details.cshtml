@@ -2,7 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -13,22 +13,37 @@
     <title>Details</title>
 </head>
 <body>
+    @section side_nav{
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a class="nav-link" href="/zaposlenik">Zaposlenici</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/vrstaZaposlenika">Vrste zaposlenika</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/lokacijaPostaje">Lokacije postaja</a>
+            </li>
 
-    <div>
-        <h4>VrstaZaposlenika</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Naziv)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Naziv)
-            </dd>
-        </dl>
-    </div>
-    <div>
-        <a asp-action="Edit" asp-route-id="@Model.SifraVrsteZaposlenika">Edit</a> |
-        <a asp-action="Index">Back to List</a>
-    </div>
-</body>
+        </ul>
+    }
+    @section container {
+        <div>
+            <h4>VrstaZaposlenika</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Naziv)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Naziv)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.SifraVrsteZaposlenika">Edit</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    }
+    </body>
 </html>
