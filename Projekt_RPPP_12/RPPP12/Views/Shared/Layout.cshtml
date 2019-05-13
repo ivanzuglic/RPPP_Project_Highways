@@ -20,6 +20,18 @@
             @RenderSection("side_nav")
         </div>
         <div style="width:80% ; margin: 20px 20px 20px 20px">
+            @if (TempData["create"] != null)
+            {
+                <div class="alert alert-success" role="alert">
+                    Uspješno ste dodali podatak!
+                </div>
+            }
+            else if (TempData["delete"] != null)
+            {
+                <div class="alert alert-success" role="alert">
+                    Uspješno ste obrisali podatak!
+                </div>
+            }
             @RenderSection("container")
         </div>
     </div>
