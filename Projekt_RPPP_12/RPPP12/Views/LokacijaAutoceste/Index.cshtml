@@ -2,7 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -13,33 +13,52 @@
     <title>Index</title>
 </head>
 <body>
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.ImeLokacije)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+    @section side_nav{
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a class="nav-link" href="autocesta">Autoceste</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="sjediste">Sjedište</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="lokacijaAutoceste">Lokacija</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="sustavNaplate">Sustav naplate</a>
+            </li>
+
+        </ul>
+    }
+    @section container {
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ImeLokacije)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.SifraLokacije">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.SifraLokacije">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.SifraLokacije">Delete</a>
-                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ImeLokacije)
+                    </th>
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>
-</body>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ImeLokacije)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.SifraLokacije">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.SifraLokacije">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.SifraLokacije">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        }
+    </body>
 </html>

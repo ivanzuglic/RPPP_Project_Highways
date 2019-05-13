@@ -66,6 +66,7 @@ namespace RPPP12.Controllers
             {
                 _context.Add(naplatnaPostaja);
                 await _context.SaveChangesAsync();
+                TempData["create"] = "Create";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["SifraDionice"] = new SelectList(_context.Dionica, "SifraDionice", "Naziv", naplatnaPostaja.SifraDionice);
@@ -156,6 +157,7 @@ namespace RPPP12.Controllers
             var naplatnaPostaja = await _context.NaplatnaPostaja.FindAsync(id);
             _context.NaplatnaPostaja.Remove(naplatnaPostaja);
             await _context.SaveChangesAsync();
+            TempData["delete"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 

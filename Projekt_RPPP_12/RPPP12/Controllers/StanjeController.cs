@@ -64,6 +64,7 @@ namespace RPPP12.Controllers
             {
                 _context.Add(stanje);
                 await _context.SaveChangesAsync();
+                TempData["create"] = "Create";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["SifraDogadaj"] = new SelectList(_context.Dogadaj, "SifraDogadaj", "SifraDogadaj", stanje.SifraDogadaj);
@@ -154,6 +155,7 @@ namespace RPPP12.Controllers
             var stanje = await _context.Stanje.FindAsync(id);
             _context.Stanje.Remove(stanje);
             await _context.SaveChangesAsync();
+            TempData["delete"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 

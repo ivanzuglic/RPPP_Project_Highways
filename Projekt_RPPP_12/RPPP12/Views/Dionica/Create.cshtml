@@ -20,7 +20,12 @@
             <li class="list-group-item">
                 <a class="nav-link" href="/objekt">Objekti</a>
             </li>
-
+            <li class="list-group-item">
+                <a class="nav-link" href="/vrstaObjekta">Vrste objekata</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/lokacijaPostaje">Lokacije postaja</a>
+            </li>
         </ul>
     }
     @section container {
@@ -62,9 +67,9 @@
         <div>
             <a asp-action="Index">Back to List</a>
         </div>
-        }
-        @section Scripts {
-            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-        }
-    </body>
+    }
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</body>
 </html>

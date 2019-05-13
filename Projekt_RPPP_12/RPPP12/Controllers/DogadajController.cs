@@ -64,6 +64,7 @@ namespace RPPP12.Controllers
             {
                 _context.Add(dogadaj);
                 await _context.SaveChangesAsync();
+                TempData["create"] = "Create";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["SifraDionica"] = new SelectList(_context.Dionica, "SifraDionice", "Naziv", dogadaj.SifraDionica);
@@ -154,6 +155,7 @@ namespace RPPP12.Controllers
             var dogadaj = await _context.Dogadaj.FindAsync(id);
             _context.Dogadaj.Remove(dogadaj);
             await _context.SaveChangesAsync();
+            TempData["delete"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 

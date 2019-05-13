@@ -2,7 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -13,46 +13,64 @@
     <title>Details</title>
 </head>
 <body>
+    @section side_nav{
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a class="nav-link" href="/autocesta">Autoceste</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/sjediste">Sjedište</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/lokacijaAutoceste">Lokacija</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/sustavNaplate">Sustav naplate</a>
+            </li>
 
-    <div>
-        <h4>Upravitelj</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Oib)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Oib)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Ime)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Ime)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Email)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Email)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Telefon)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Telefon)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.SifraSjedistaNavigation)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.SifraSjedistaNavigation.Adresa)
-            </dd>
-        </dl>
-    </div>
-    <div>
-        <a asp-action="Edit" asp-route-id="@Model.SifraUpravitelja">Edit</a> |
-        <a asp-action="Index">Back to List</a>
-    </div>
-</body>
+        </ul>
+    }
+    @section container {
+        <div>
+            <h4>Upravitelj</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Oib)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Oib)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Ime)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Ime)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Telefon)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Telefon)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SifraSjedistaNavigation)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SifraSjedistaNavigation.Adresa)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.SifraUpravitelja">Edit</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    }
+    </body>
 </html>

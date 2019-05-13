@@ -66,6 +66,7 @@ namespace RPPP12.Controllers
             {
                 _context.Add(alarm);
                 await _context.SaveChangesAsync();
+                TempData["create"] = "Create";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["SifraDogadaja"] = new SelectList(_context.Dogadaj, "SifraDogadaj", "SifraDogadaj", alarm.SifraDogadaja);
@@ -160,6 +161,7 @@ namespace RPPP12.Controllers
             var alarm = await _context.Alarm.FindAsync(id);
             _context.Alarm.Remove(alarm);
             await _context.SaveChangesAsync();
+            TempData["delete"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 

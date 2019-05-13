@@ -19,7 +19,7 @@ namespace RPPP12.Models
 
         [Display(Name = "Blagajnik")]
         public Zaposlenik SifraBlagajnikaNavigation { get; set; }
-        [Display(Name = "Naplatna postja")]
+        [Display(Name = "Naplatna postaja")]
         public NaplatnaPostaja SifraPostajaNavigation { get; set; }
         [Display(Name = "Vrsta naplatne kućice")]
         public VrstaNaplatneKucice VrstaNaplatneKuciceNavigation { get; set; }

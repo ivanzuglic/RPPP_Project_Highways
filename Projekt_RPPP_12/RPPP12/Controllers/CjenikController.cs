@@ -64,6 +64,7 @@ namespace RPPP12.Controllers
             {
                 _context.Add(cjenik);
                 await _context.SaveChangesAsync();
+                TempData["create"] = "Create";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["SifraKategorijaVozila"] = new SelectList(_context.KategorijaVozila, "SifraKategorijaVozila", "Opis", cjenik.SifraKategorijaVozila);
@@ -154,6 +155,7 @@ namespace RPPP12.Controllers
             var cjenik = await _context.Cjenik.FindAsync(id);
             _context.Cjenik.Remove(cjenik);
             await _context.SaveChangesAsync();
+            TempData["delete"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 

@@ -78,6 +78,7 @@ namespace RPPP12.Controllers
             {
                 _context.Add(dionica);
                 await _context.SaveChangesAsync();
+                TempData["create"] = "Create";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["SifraAutoceste"] = new SelectList(_context.Autocesta, "SifraAutoceste", "ImeAutoceste", dionica.SifraAutoceste);
@@ -172,6 +173,7 @@ namespace RPPP12.Controllers
             var dionica = await _context.Dionica.FindAsync(id);
             _context.Dionica.Remove(dionica);
             await _context.SaveChangesAsync();
+            TempData["delete"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 

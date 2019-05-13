@@ -19,12 +19,20 @@
             <li class="list-group-item">
                 <a class="nav-link" href="/autocesta">Autoceste</a>
             </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/sjediste">Sjedište</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/lokacijaAutoceste">Lokacija</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/sustavNaplate">Sustav naplate</a>
+            </li>
 
         </ul>
     }
     @section container {
         <hr />
-        <div class="row">
             <div class="input-group mb-3">
                 <form asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -69,14 +77,13 @@
                     </div>
                 </form>
             </div>
-        </div>
-        }
-        <div>
-            <a asp-action="Index">Back to List</a>
-        </div>
+    }
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
 
-        @section Scripts {
-            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-        }
-    </body>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</body>
 </html>

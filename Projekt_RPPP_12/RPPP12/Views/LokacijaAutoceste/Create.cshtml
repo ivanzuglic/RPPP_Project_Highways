@@ -2,7 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Create_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -13,36 +13,53 @@
     <title>Create</title>
 </head>
 <body>
+    @section side_nav{
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a class="nav-link" href="/autocesta">Autoceste</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/sjediste">Sjedište</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/lokacijaAutoceste">Lokacija</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/sustavNaplate">Sustav naplate</a>
+            </li>
 
-    <h4>LokacijaAutoceste</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="Create">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="SifraLokacije" class="control-label"></label>
-                    <input asp-for="SifraLokacije" class="form-control" />
-                    <span asp-validation-for="SifraLokacije" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="ImeLokacije" class="control-label"></label>
-                    <input asp-for="ImeLokacije" class="form-control" />
-                    <span asp-validation-for="ImeLokacije" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div>
-        <a asp-action="Index">Back to List</a>
-    </div>
-
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        </ul>
     }
-</body>
+    @section container {
+        <h4>LokacijaAutoceste</h4>
+        <hr />
+        <div class="row">
+            <div class="input-group mb-3">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="SifraLokacije" class="control-label"></label>
+                        <input asp-for="SifraLokacije" class="form-control" />
+                        <span asp-validation-for="SifraLokacije" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImeLokacije" class="control-label"></label>
+                        <input asp-for="ImeLokacije" class="form-control" />
+                        <span asp-validation-for="ImeLokacije" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        }
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
+    </body>
 </html>

@@ -59,6 +59,7 @@ namespace RPPP12.Controllers
             {
                 _context.Add(vrstaNaplatneKucice);
                 await _context.SaveChangesAsync();
+                TempData["create"] = "Create";
                 return RedirectToAction(nameof(Index));
             }
             return View(vrstaNaplatneKucice);
@@ -141,6 +142,7 @@ namespace RPPP12.Controllers
             var vrstaNaplatneKucice = await _context.VrstaNaplatneKucice.FindAsync(id);
             _context.VrstaNaplatneKucice.Remove(vrstaNaplatneKucice);
             await _context.SaveChangesAsync();
+            TempData["delete"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 

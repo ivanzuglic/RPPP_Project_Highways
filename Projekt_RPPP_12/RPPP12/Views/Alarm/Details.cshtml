@@ -2,7 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -13,40 +13,58 @@
     <title>Details</title>
 </head>
 <body>
+    @section side_nav{
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a class="nav-link" href="/scenarij">Scenariji</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/alarm">Alarmi</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/kategorijaScenarija">Kategorije scenarija</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/vrstaUredaja">Vrste uređaja</a>
+            </li>
 
-    <div>
-        <h4>Alarm</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.SifraOperatera)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.SifraOperatera)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.SifraDogadajaNavigation)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.SifraDogadajaNavigation.SifraDogadaj)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.SifraScenarijaNavigation)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.SifraScenarijaNavigation.NazivScenarija)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.SifraUredajaNavigation)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.SifraUredajaNavigation.SifraUredaja)
-            </dd>
-        </dl>
-    </div>
-    <div>
-        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-        <a asp-action="Index">Back to List</a>
-    </div>
-</body>
+        </ul>
+    }
+    @section container {
+        <div>
+            <h4>Alarm</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.SifraOperatera)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SifraOperatera)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SifraDogadajaNavigation)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SifraDogadajaNavigation.SifraDogadaj)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SifraScenarijaNavigation)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SifraScenarijaNavigation.NazivScenarija)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SifraUredajaNavigation)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SifraUredajaNavigation.SifraUredaja)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    }
+    </body>
 </html>

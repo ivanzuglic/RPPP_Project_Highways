@@ -2,7 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -13,40 +13,58 @@
     <title>Details</title>
 </head>
 <body>
+    @section side_nav{
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a class="nav-link" href="/scenarij">Scenariji</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/alarm">Alarmi</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/kategorijaScenarija">Kategorije scenarija</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/vrstaUredaja">Vrste uređaja</a>
+            </li>
 
-    <div>
-        <h4>Scenarij</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.NazivScenarija)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.NazivScenarija)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Procedura)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Procedura)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.SifraVrsteObjekta)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.SifraVrsteObjekta)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.SifraVrsteScenarijaNavigation)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.SifraVrsteScenarijaNavigation.NazivKategorijeScenarija)
-            </dd>
-        </dl>
-    </div>
-    <div>
-        <a asp-action="Edit" asp-route-id="@Model.SifraScenarija">Edit</a> |
-        <a asp-action="Index">Back to List</a>
-    </div>
-</body>
+        </ul>
+    }
+    @section container {
+        <div>
+            <h4>Scenarij</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.NazivScenarija)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.NazivScenarija)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Procedura)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Procedura)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SifraVrsteObjekta)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SifraVrsteObjekta)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SifraVrsteScenarijaNavigation)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SifraVrsteScenarijaNavigation.NazivKategorijeScenarija)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.SifraScenarija">Edit</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    }
+    </body>
 </html>

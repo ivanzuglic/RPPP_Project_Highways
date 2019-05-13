@@ -19,13 +19,18 @@
             <li class="list-group-item">
                 <a class="nav-link" href="/zaposlenik">Zaposlenici</a>
             </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/vrstaZaposlenika">Vrste zaposlenika</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/lokacijaPostaje">Lokacije postaja</a>
+            </li>
 
         </ul>
     }
     @section container {
         <h4>NaplatnaPostaja</h4>
         <hr />
-        <div class="row">
             <div class="input-group mb-3">
                 <form asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -47,7 +52,6 @@
                     </div>
                 </form>
             </div>
-        </div>
 
         <div>
             <a asp-action="Index">Back to List</a>

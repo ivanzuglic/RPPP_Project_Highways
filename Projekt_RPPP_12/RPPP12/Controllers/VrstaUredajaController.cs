@@ -59,6 +59,7 @@ namespace RPPP12.Controllers
             {
                 _context.Add(vrstaUredaja);
                 await _context.SaveChangesAsync();
+                TempData["create"] = "Create";
                 return RedirectToAction(nameof(Index));
             }
             return View(vrstaUredaja);
@@ -141,6 +142,7 @@ namespace RPPP12.Controllers
             var vrstaUredaja = await _context.VrstaUredaja.FindAsync(id);
             _context.VrstaUredaja.Remove(vrstaUredaja);
             await _context.SaveChangesAsync();
+            TempData["delete"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 
