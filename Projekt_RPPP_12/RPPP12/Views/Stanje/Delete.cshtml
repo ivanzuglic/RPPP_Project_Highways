@@ -52,7 +52,7 @@
             </dd>
         </dl>
 
-        <form asp-action="Delete">
+        <form asp-action="Delete" asp-route-id="@Model.SifraStanje">
             <input type="hidden" asp-for="SifraStanje" />
             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Delete</button>
 
