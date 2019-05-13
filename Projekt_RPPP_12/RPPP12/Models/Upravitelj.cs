@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace RPPP12.Models
 {
@@ -17,6 +18,7 @@ namespace RPPP12.Models
         public string Email { get; set; }
         public string Telefon { get; set; }
 
+        [Display(Name = "Sjedište")]
         public Sjediste SifraSjedistaNavigation { get; set; }
         public ICollection<Autocesta> Autocesta { get; set; }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace RPPP12.Models
 {
@@ -15,7 +16,9 @@ namespace RPPP12.Models
         public int? SifraObjekta { get; set; }
         public int? SifraVrsteUredaja { get; set; }
 
+        [Display(Name = "Objekt")]
         public Objekt SifraObjektaNavigation { get; set; }
+        [Display(Name = "Vrsta uređaja")]
         public VrstaUredaja SifraVrsteUredajaNavigation { get; set; }
         public ICollection<Alarm> Alarm { get; set; }
     }
