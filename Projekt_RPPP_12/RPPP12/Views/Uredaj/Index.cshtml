@@ -72,6 +72,16 @@
                             Šifra Objekta
                         </a>
                     </th>
+                    <th>
+                        <a asp-route-sort="3" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 3 ? Model.PagingInfo.Ascending? false : true : true)">
+                            Status
+                        </a>
+                    </th>
+                    <th>
+                        <a asp-route-sort="4" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 4 ? Model.PagingInfo.Ascending? false : true : true)">
+                            Naziv uređaja
+                        </a>
+                    </th>
 
 
                     <th></th>
@@ -104,7 +114,7 @@
                         @Html.DisplayFor(modelItem => uredaj.SifraUredaja)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => uredaj.SifraObjektaNavigation)
+                        @Html.DisplayFor(modelItem => uredaj.SifraObjektaNavigation.SifraObjekta)
 
                     </td>
                     <td>

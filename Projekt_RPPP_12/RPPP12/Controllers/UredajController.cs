@@ -58,16 +58,16 @@ namespace RPPP12.Controllers
                 case 1:
                     orderSelector = d => d.SifraUredaja;
                     break;
-                //sortiranje po drugim parametrima
-                /*case 2:
-                    orderSelector = d => d.NazDrzave;
+                
+                case 2:
+                    orderSelector = d => d.SifraObjektaNavigation.SifraObjekta;
                     break;
                 case 3:
-                    orderSelector = d => d.Iso3drzave;
+                    orderSelector = d => d.Status;
                     break;
                 case 4:
-                    orderSelector = d => d.SifDrzave;
-                    break; */
+                    orderSelector = d => d.SifraVrsteUredajaNavigation.NazivVrsteUredaja;
+                    break; 
             }
             if (orderSelector != null)
             {
