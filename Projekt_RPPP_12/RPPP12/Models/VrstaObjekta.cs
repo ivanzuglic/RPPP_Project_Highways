@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace RPPP12.Models
 {
@@ -11,6 +12,7 @@ namespace RPPP12.Models
         }
 
         public int SifraVrsteObjekta { get; set; }
+        [Display(Name = "Naziv objekta")]
         public string NazivObjekta { get; set; }
 
         public ICollection<Objekt> Objekt { get; set; }

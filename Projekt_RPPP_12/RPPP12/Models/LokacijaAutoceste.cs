@@ -16,7 +16,7 @@ namespace RPPP12.Models
         public int SifraLokacije { get; set; }
         [Display(Name = "Ime lokacije")]
         public string ImeLokacije { get; set; }
-
+        
         public ICollection<Autocesta> AutocestaSifraPocetkaNavigation { get; set; }
         public ICollection<Autocesta> AutocestaSifraZavrsetkaNavigation { get; set; }
     }

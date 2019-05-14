@@ -27,6 +27,7 @@ namespace RPPP12.Models
         [Display(Name = "Početak")]
         public LokacijaPostaje SifraPocetkaNavigation { get; set; }
         public ICollection<Dogadaj> Dogadaj { get; set; }
+        [Display(Name = "Naplatna postaja")]
         public ICollection<NaplatnaPostaja> NaplatnaPostaja { get; set; }
         public ICollection<Objekt> Objekt { get; set; }
     }

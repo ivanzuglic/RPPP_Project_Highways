@@ -12,6 +12,7 @@ namespace RPPP12.Models
         }
 
         public int SifraScenarija { get; set; }
+        [Display(Name = "Naziv scenarija")]
         public string NazivScenarija { get; set; }
         public string Procedura { get; set; }
         [Display(Name = "Vrsta objekta")]

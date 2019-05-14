@@ -6,9 +6,13 @@ namespace RPPP12.Models
 {
     public partial class Alarm
     {
+        [Display(Name = "Šifra uređaja")]
         public int SifraUredaja { get; set; }
+        [Display(Name = "Šifra događaja")]
         public int SifraDogadaja { get; set; }
+        [Display(Name = "Šifra scenarija")]
         public int? SifraScenarija { get; set; }
+        [Display(Name = "Šifra operatera")]
         public int? SifraOperatera { get; set; }
 
         [Display(Name = "Događaj")]

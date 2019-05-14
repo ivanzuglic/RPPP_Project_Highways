@@ -25,6 +25,7 @@ namespace RPPP12.Models
         public NaplatnaPostaja SifraPostajeNavigation { get; set; }
         [Display(Name = "Vrsta zaposlenika")]
         public VrstaZaposlenika SifraVrsteZaposlenikaNavigation { get; set; }
+        [Display(Name = "Naplatna kućica")]
         public ICollection<NaplatnaKucica> NaplatnaKucica { get; set; }
     }
 }

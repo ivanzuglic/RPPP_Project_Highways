@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace RPPP12.Models
 {
@@ -10,8 +11,9 @@ namespace RPPP12.Models
             NaplatnaKucica = new HashSet<NaplatnaKucica>();
         }
 
+        [Display(Name = "Vrsta naplatne kućice")]
         public string VrstaNaplatneKucice1 { get; set; }
-
+        [Display(Name = "Naplatna kućica")]
         public ICollection<NaplatnaKucica> NaplatnaKucica { get; set; }
     }
 }

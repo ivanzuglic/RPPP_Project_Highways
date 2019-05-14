@@ -22,6 +22,7 @@ namespace RPPP12.Models
         public Dionica SifraDioniceNavigation { get; set; }
         [Display(Name = "Lokacija postaje")]
         public LokacijaPostaje SifraLokacijePostajeNavigation { get; set; }
+        [Display(Name = "Naplatna kućica")]
         public ICollection<NaplatnaKucica> NaplatnaKucica { get; set; }
         public ICollection<Zaposlenik> Zaposlenik { get; set; }
     }

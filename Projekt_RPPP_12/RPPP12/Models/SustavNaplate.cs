@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace RPPP12.Models
 {
@@ -11,6 +12,7 @@ namespace RPPP12.Models
         }
 
         public int SifraNacinaPlacanja { get; set; }
+        [Display(Name = "Način plačanja")]
         public string NacinPlacanja { get; set; }
 
         public ICollection<Autocesta> Autocesta { get; set; }

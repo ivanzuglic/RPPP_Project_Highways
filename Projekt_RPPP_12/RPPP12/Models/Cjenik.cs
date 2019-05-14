@@ -7,6 +7,7 @@ namespace RPPP12.Models
     public partial class Cjenik
     {
         public int SifraKucica { get; set; }
+        [Display(Name = "Šifra kategorije vozila")]
         public int SifraKategorijaVozila { get; set; }
         public double Cijena { get; set; }
 

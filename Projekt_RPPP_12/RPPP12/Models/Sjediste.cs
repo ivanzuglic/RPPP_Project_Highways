@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace RPPP12.Models
 {
@@ -11,6 +12,7 @@ namespace RPPP12.Models
         }
 
         public int SifraSjedista { get; set; }
+        [Display(Name = "Ime sjedišta")]
         public string ImeSjedista { get; set; }
         public string Adresa { get; set; }
 

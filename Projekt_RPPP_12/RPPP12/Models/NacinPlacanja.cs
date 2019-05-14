@@ -11,6 +11,7 @@ namespace RPPP12.Models
             Racun = new HashSet<Racun>();
         }
 
+        [Display(Name = "Šifra načina plaćanja")]
         public int SifraNacinPlacanja { get; set; }
         [Display(Name = "Način plaćanja")]
         public string NacinPlacanja1 { get; set; }

@@ -12,14 +12,17 @@ namespace RPPP12.Models
         }
 
         public int SifraAutoceste { get; set; }
+        [Display(Name = "Ime autoceste")]
         public string ImeAutoceste { get; set; }
         public int SifraPocetka { get; set; }
         public int SifraZavrsetka { get; set; }
         public string Nadimak { get; set; }
+        [Display(Name = "Šifra upravitelja")]
         public int SifraUpravitelja { get; set; }
         public int Kilometraza { get; set; }
         public int? SifraNacinaPlacanja { get; set; }
 
+        [Display(Name = "Šifra načina plaćanja")]
         public SustavNaplate SifraNacinaPlacanjaNavigation { get; set; }
         [Display(Name = "Početak")]
         public LokacijaAutoceste SifraPocetkaNavigation { get; set; }

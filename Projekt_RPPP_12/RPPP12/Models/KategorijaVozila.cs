@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace RPPP12.Models
 {
@@ -11,6 +12,7 @@ namespace RPPP12.Models
             Racun = new HashSet<Racun>();
         }
 
+        [Display(Name = "Šifra kategorije vozila")]
         public int SifraKategorijaVozila { get; set; }
         public int Oznaka { get; set; }
         public string Opis { get; set; }

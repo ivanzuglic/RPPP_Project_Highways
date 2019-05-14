@@ -20,6 +20,7 @@ namespace RPPP12.Models
         public Dionica SifraDioniceNavigation { get; set; }
         [Display(Name = "Vrsta objekta")]
         public VrstaObjekta SifraVrstaObjektaNavigation { get; set; }
+        [Display(Name = "Uređaj")]
         public ICollection<Uredaj> Uredaj { get; set; }
     }
 }

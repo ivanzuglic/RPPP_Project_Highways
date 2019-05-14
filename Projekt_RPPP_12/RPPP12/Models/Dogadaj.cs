@@ -13,9 +13,12 @@ namespace RPPP12.Models
         }
 
         public int SifraDogadaj { get; set; }
+        [Display(Name = "Datum i vrijeme")]
         public byte[] DatumVrijeme { get; set; }
         public string Link { get; set; }
+        [Display(Name = "Šifra razine opasnosti")]
         public int SifraRazinaOpasnosti { get; set; }
+        [Display(Name = "Šifra dionice")]
         public int SifraDionica { get; set; }
         public string Opis { get; set; }
 
