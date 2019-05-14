@@ -13,10 +13,17 @@ namespace RPPP12.Models
 
         public int SifraZaposlenika { get; set; }
         [Display(Name = "Ime")]
+        [StringLength(50, ErrorMessage = "Znakovno polje mora biti manje od 50 znakova.")]
+        [Required(ErrorMessage = "Obavezno polje.")]
         public string Ime { get; set; }
         [Display(Name = "Prezime")]
+        [StringLength(50, ErrorMessage = "Znakovno polje mora biti manje od 50 znakova.")]
+        [Required(ErrorMessage = "Obavezno polje.")]
         public string Prezime { get; set; }
         [Display(Name = "Telefon")]
+        [RegularExpression(@"^[0-9]{10}$", ErrorMessage = "Upišite broj mobitela.")]
+        [StringLength(10, ErrorMessage = "Broj telefona sadrži 10 znamenki.")]
+        [Required(ErrorMessage = "Obavezno polje.")]
         public string Telefon { get; set; }
         public int? SifraPostaje { get; set; }
         public int? SifraVrsteZaposlenika { get; set; }
