@@ -5,19 +5,21 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using RPPP12.Models;
+using RPPP12.ViewModels;
 
 namespace RPPP12.Controllers
 {
     public class DionicaController : Controller
     {
         private readonly RPPP12Context _context;
-    //  private readonly AppSettings appData;
+        private readonly AppSettings appData;
 
-        public DionicaController(RPPP12Context context/*, IOptionsSnapshot<AppSettings> options*/)
+        public DionicaController(RPPP12Context context, IOptionsSnapshot<AppSettings> options)
         {
             _context = context;
-      //    appData = options.Value;
+            appData = options.Value;
         }
 
         /*public IActionResult Index()
@@ -31,10 +33,75 @@ namespace RPPP12.Controllers
 
 
         // GET: Dionica
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1, int sort = 1, bool ascending = true)
         {
-            var rPPP12Context = _context.Dionica.Include(d => d.SifraAutocesteNavigation).Include(d => d.SifraKrajaNavigation).Include(d => d.SifraPocetkaNavigation);
-            return View(await rPPP12Context.ToListAsync());
+            //var rPPP12Context = _context.Dionica.Include(d => d.SifraAutocesteNavigation).Include(d => d.SifraKrajaNavigation).Include(d => d.SifraPocetkaNavigation);
+            //return View(await rPPP12Context.ToListAsync());
+            int pagesize = appData.PageSize;
+
+            var query = _context.Dionica
+                        .AsNoTracking();
+
+            int count = query.Count();
+            if (count == 0)
+            {
+                return RedirectToAction(nameof(Create));
+            }
+
+            var pagingInfo = new PagingInfo
+            {
+                CurrentPage = page,
+                Sort = sort,
+                Ascending = ascending,
+                ItemsPerPage = pagesize,
+                TotalItems = count
+            };
+            if (page > pagingInfo.TotalPages)
+            {
+                return RedirectToAction(nameof(Index), new { page = pagingInfo.TotalPages, sort, ascending });
+            }
+
+            System.Linq.Expressions.Expression<Func<Dionica, object>> orderSelector = null;
+            switch (sort)
+            {
+                case 1:
+                    orderSelector = d => d.Naziv;
+                    break;
+                    //sortiranje po drugim parametrima
+                    case 2:
+                        orderSelector = d => d.Duljina;
+                        break;
+                    case 3:
+                        orderSelector = d => d.SifraAutocesteNavigation.ImeAutoceste;
+                        break;
+                    case 4:
+                        orderSelector = d => d.SifraKrajaNavigation.NazivLokacije;
+                        break;
+                    case 5:
+                        orderSelector = d => d.SifraPocetkaNavigation.NazivLokacije;
+                        break;
+            }
+            if (orderSelector != null)
+            {
+                query = ascending ?
+                       query.OrderBy(orderSelector) :
+                       query.OrderByDescending(orderSelector);
+            }
+            var dionice = query
+                        .Include(d => d.SifraAutocesteNavigation)
+                        .Include(d => d.SifraKrajaNavigation)
+                        .Include(d => d.SifraPocetkaNavigation)
+                        .Skip((page - 1) * pagesize)
+                        .Take(pagesize)
+                        .ToList();
+            var model = new DionicaViewModel
+            {
+                Dionice = dionice,
+                PagingInfo = pagingInfo
+            };
+
+            return View(model);
+
         }
 
         // GET: Dionica/Details/5
