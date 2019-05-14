@@ -23,9 +23,6 @@ namespace RPPP12.Controllers
         }
 
         // GET: Dogadaj
-
-        //var rPPP12Context = _context.Dogadaj.Include(d => d.SifraDionicaNavigation).Include(d => d.SifraRazinaOpasnostiNavigation);
-        //return View(await rPPP12Context.ToListAsync());
         public async Task<IActionResult> Index(int page = 1, int sort = 1, bool ascending = true)
         {
             //var rPPP12Context = _context.NaplatnaKucica.Include(n => n.SifraBlagajnikaNavigation).Include(n => n.SifraPostajaNavigation).Include(n => n.VrstaNaplatneKuciceNavigation);

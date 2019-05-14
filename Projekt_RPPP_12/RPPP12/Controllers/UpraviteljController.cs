@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RPPP12.Models;
 using Microsoft.Extensions.Options;
+using RPPP12.ViewModels;
 
 namespace RPPP12.Controllers
 {
@@ -18,14 +19,79 @@ namespace RPPP12.Controllers
         public UpraviteljController(RPPP12Context context, IOptionsSnapshot<AppSettings> options)
         {
             _context = context;
+            appData = options.Value;
         }
 
         // GET: Upravitelj
-        public async Task<IActionResult> Index()
+        //var rPPP12Context = _context.Upravitelj.Include(u => u.SifraSjedistaNavigation);
+        //return View(await rPPP12Context.ToListAsync());
+        public async Task<IActionResult> Index(int page = 1, int sort = 1, bool ascending = true)
         {
-            var rPPP12Context = _context.Upravitelj.Include(u => u.SifraSjedistaNavigation);
-            return View(await rPPP12Context.ToListAsync());
+            //var rPPP12Context = _context.NaplatnaKucica.Include(n => n.SifraBlagajnikaNavigation).Include(n => n.SifraPostajaNavigation).Include(n => n.VrstaNaplatneKuciceNavigation);
+            //return View(await rPPP12Context.ToListAsync());
+            int pagesize = appData.PageSize;
+
+            var query = _context.Upravitelj
+                        .AsNoTracking();
+
+            int count = query.Count();
+            if (count == 0)
+            {
+                return RedirectToAction(nameof(Create));
+            }
+
+            var pagingInfo = new PagingInfo
+            {
+                CurrentPage = page,
+                Sort = sort,
+                Ascending = ascending,
+                ItemsPerPage = pagesize,
+                TotalItems = count
+            };
+            if (page > pagingInfo.TotalPages)
+            {
+                return RedirectToAction(nameof(Index), new { page = pagingInfo.TotalPages, sort, ascending });
+            }
+
+            System.Linq.Expressions.Expression<Func<Upravitelj, object>> orderSelector = null;
+            switch (sort)
+            {
+                case 1:
+                    orderSelector = d => d.Oib;
+                    break;
+                case 2:
+                    orderSelector = d => d.Ime;
+                    break;
+                case 3:
+                    orderSelector = d => d.Email;
+                    break;
+                case 4:
+                    orderSelector = d => d.Telefon;
+                    break;
+                case 5:
+                    orderSelector = d => d.SifraSjedistaNavigation.Adresa;
+                    break;
+            }
+            if (orderSelector != null)
+            {
+                query = ascending ?
+                       query.OrderBy(orderSelector) :
+                       query.OrderByDescending(orderSelector);
+            }
+            var upravitelji = query
+                        .Include(u => u.SifraSjedistaNavigation)
+                        .Skip((page - 1) * pagesize)
+                        .Take(pagesize)
+                        .ToList();
+            var model = new UpraviteljViewModel
+            {
+                Upravitelji = upravitelji,
+                PagingInfo = pagingInfo
+            };
+
+            return View(model);
         }
+
 
         // GET: Upravitelj/Details/5
         public async Task<IActionResult> Details(int? id)
