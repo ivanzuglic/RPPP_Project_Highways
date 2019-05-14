@@ -9,6 +9,7 @@ namespace RPPP12.Models
         public int SifraUredaja { get; set; }
         public int SifraDogadaja { get; set; }
         public int? SifraScenarija { get; set; }
+        [Range(0, 99999, ErrorMessage = "Upišite broj u rasponu od 0 do 99999.")]
         public int? SifraOperatera { get; set; }
 
         [Display(Name = "Događaj")]

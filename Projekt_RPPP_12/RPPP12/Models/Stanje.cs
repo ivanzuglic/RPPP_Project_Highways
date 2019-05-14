@@ -11,6 +11,7 @@ namespace RPPP12.Models
         public TimeSpan? VrijemeZavrsetka { get; set; }
         public int? SifraDogadaj { get; set; }
         public int? SifraZabrana { get; set; }
+        [StringLength(100, MinimumLength = 1)]
         public string Opis { get; set; }
 
         [Display(Name = "Događaj")]

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace RPPP12.Models
 {
@@ -11,6 +12,7 @@ namespace RPPP12.Models
         }
 
         public int SifraVrsteUredaja { get; set; }
+        [StringLength(50, ErrorMessage = "Znakovno polje mora biti manje od 50 znakova.")]
         public string NazivVrsteUredaja { get; set; }
 
         public ICollection<Uredaj> Uredaj { get; set; }

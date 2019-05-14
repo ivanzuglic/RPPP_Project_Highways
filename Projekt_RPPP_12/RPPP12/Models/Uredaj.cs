@@ -12,6 +12,7 @@ namespace RPPP12.Models
         }
 
         public int SifraUredaja { get; set; }
+        [StringLength(50, ErrorMessage = "Znakovno polje mora biti manje od 50 znakova.")]
         public string Status { get; set; }
         public int? SifraObjekta { get; set; }
         public int? SifraVrsteUredaja { get; set; }

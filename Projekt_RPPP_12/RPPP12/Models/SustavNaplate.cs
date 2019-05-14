@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace RPPP12.Models
 {
@@ -11,6 +13,8 @@ namespace RPPP12.Models
         }
 
         public int SifraNacinaPlacanja { get; set; }
+        [StringLength(50, ErrorMessage = "Znakovno polje mora biti manje od 50 znakova.")]
+        [Required(ErrorMessage = "Obavezno polje.")]
         public string NacinPlacanja { get; set; }
 
         public ICollection<Autocesta> Autocesta { get; set; }

@@ -14,9 +14,11 @@ namespace RPPP12.Models
 
         public int SifraDogadaj { get; set; }
         public byte[] DatumVrijeme { get; set; }
+        [StringLength(50, ErrorMessage = "Znakovno polje mora biti manje od 50 znakova.")]
         public string Link { get; set; }
         public int SifraRazinaOpasnosti { get; set; }
         public int SifraDionica { get; set; }
+        [StringLength(50, ErrorMessage = "Znakovno polje mora biti manje od 50 znakova.")]
         public string Opis { get; set; }
 
         [Display(Name = "Dionica")]

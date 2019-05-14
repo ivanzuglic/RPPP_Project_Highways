@@ -12,7 +12,9 @@ namespace RPPP12.Models
         }
 
         public int SifraKategorijeScenarija { get; set; }
-        [Display(Name = "Kategorjia")]
+        [Display(Name = "Kategorija")]
+        [StringLength(50, ErrorMessage = "Znakovno polje mora biti manje od 50 znakova.")]
+        [Required(ErrorMessage = "Obavezno polje.")]
         public string NazivKategorijeScenarija { get; set; }
 
         public ICollection<Scenarij> Scenarij { get; set; }
