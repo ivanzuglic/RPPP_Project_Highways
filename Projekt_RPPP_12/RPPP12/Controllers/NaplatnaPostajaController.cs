@@ -5,24 +5,87 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using RPPP12.Models;
+using RPPP12.ViewModels;
 
 namespace RPPP12.Controllers
 {
     public class NaplatnaPostajaController : Controller
     {
         private readonly RPPP12Context _context;
+        private readonly AppSettings appData;
 
-        public NaplatnaPostajaController(RPPP12Context context)
+        public NaplatnaPostajaController(RPPP12Context context, IOptionsSnapshot<AppSettings> options)
         {
             _context = context;
+            appData = options.Value;
         }
 
         // GET: NaplatnaPostaja
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1, int sort = 1, bool ascending = true) 
         {
-            var rPPP12Context = _context.NaplatnaPostaja.Include(n => n.SifraDioniceNavigation).Include(n => n.SifraLokacijePostajeNavigation).Include(n => n.Zaposlenik);
-            return View(await rPPP12Context.ToListAsync());
+            //var rPPP12Context = _context.NaplatnaPostaja.Include(n => n.SifraDioniceNavigation).Include(n => n.SifraLokacijePostajeNavigation).Include(n => n.Zaposlenik);
+            //return View(await rPPP12Context.ToListAsync());
+            //var rPPP12Context = _context.Dionica.Include(d => d.SifraAutocesteNavigation).Include(d => d.SifraKrajaNavigation).Include(d => d.SifraPocetkaNavigation);
+            //return View(await rPPP12Context.ToListAsync());
+            int pagesize = appData.PageSize;
+
+            var query = _context.NaplatnaPostaja
+                        .AsNoTracking();
+
+            int count = query.Count();
+            if (count == 0)
+            {
+                return RedirectToAction(nameof(Create));
+            }
+
+            var pagingInfo = new PagingInfo
+            {
+                CurrentPage = page,
+                Sort = sort,
+                Ascending = ascending,
+                ItemsPerPage = pagesize,
+                TotalItems = count
+            };
+            if (page > pagingInfo.TotalPages)
+            {
+                return RedirectToAction(nameof(Index), new { page = pagingInfo.TotalPages, sort, ascending });
+            }
+
+            System.Linq.Expressions.Expression<Func<NaplatnaPostaja, object>> orderSelector = null;
+            switch (sort)
+            {
+                case 1:
+                    orderSelector = d => d.ImePostaje;
+                    break;
+                case 2:
+                    orderSelector = d => d.SifraDioniceNavigation.Naziv;
+                    break;
+                case 3:
+                    orderSelector = d => d.SifraLokacijePostajeNavigation.NazivLokacije;
+                    break;
+            }
+            if (orderSelector != null)
+            {
+                query = ascending ?
+                       query.OrderBy(orderSelector) :
+                       query.OrderByDescending(orderSelector);
+            }
+            var naplatnePostaje = query
+                        .Include(n => n.SifraDioniceNavigation)
+                        .Include(n => n.SifraLokacijePostajeNavigation)
+                        .Include(n => n.Zaposlenik)
+                        .Skip((page - 1) * pagesize)
+                        .Take(pagesize)
+                        .ToList();
+            var model = new NaplatnaPostajaViewModel
+            {
+                NaplatnePostaje = naplatnePostaje,
+                PagingInfo = pagingInfo
+            };
+
+            return View(model);
         }
 
         // GET: NaplatnaPostaja/Details/5

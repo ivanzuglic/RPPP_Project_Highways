@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RPPP12.Models.NaplatnaPostaja>
+﻿@model RPPP12.ViewModels.NaplatnaPostajaViewModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
@@ -16,40 +16,51 @@
 </head>
 <body>
     @section side_nav{
-    <ul class="list-group">
-        <li class="list-group-item">
-            <a class="nav-link" href="/zaposlenik">Zaposlenici</a>
-        </li>
-        <li class="list-group-item">
-            <a class="nav-link" href="/vrstaZaposlenika">Vrste zaposlenika</a>
-        </li>
-        <li class="list-group-item">
-            <a class="nav-link" href="/lokacijaPostaje">Lokacije postaja</a>
-        </li>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a class="nav-link" href="/zaposlenik">Zaposlenici</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/vrstaZaposlenika">Vrste zaposlenika</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/lokacijaPostaje">Lokacije postaja</a>
+            </li>
 
-    </ul>
+        </ul>
     }
     @section container {
         <p>
             <a asp-action="Create">Create New</a>
         </p>
+
+        <a asp-route-page=@(Model.PagingInfo.CurrentPage == 1 ? 1 : Model.PagingInfo.CurrentPage-1)
+           asp-route-sort=@(Model.PagingInfo.Sort) asp-route-ascending=@(Model.PagingInfo.Ascending)>Nazad</a>
+        <a asp-route-page=@(Model.PagingInfo.CurrentPage == Model.PagingInfo.TotalPages ? Model.PagingInfo.TotalPages : Model.PagingInfo.CurrentPage+1)
+           asp-route-sort=@(Model.PagingInfo.Sort) asp-route-ascending=@(Model.PagingInfo.Ascending)>Napred</a>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.ImePostaje)
+                        <a asp-route-sort="1" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 1 ? Model.PagingInfo.Ascending? false : true : true)">
+                            Ime postaje
+                        </a>
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.SifraDioniceNavigation)
+                        <a asp-route-sort="2" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 2 ? Model.PagingInfo.Ascending? false : true : true)">
+                            Dionica
+                        </a>
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.SifraLokacijePostajeNavigation)
+                        <a asp-route-sort="3" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 3 ? Model.PagingInfo.Ascending? false : true : true)">
+                            Lokacija postaje
+                        </a>
                     </th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var item in Model.NaplatnePostaje)
                 {
                     <tr>
                         <td>
