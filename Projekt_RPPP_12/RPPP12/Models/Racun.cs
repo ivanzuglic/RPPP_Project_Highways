@@ -9,8 +9,12 @@ namespace RPPP12.Models
         public int SifraRacun { get; set; }
         public int SifraKucica { get; set; }
         [Display(Name = "Registarska oznaka")]
+        [StringLength(50, ErrorMessage = "Znakovno polje mora biti manje od 50 znakova.")]
+        [Required(ErrorMessage = "Obavezno polje.")]
         public string RegistarskaOznaka { get; set; }
         [Display(Name = "Datum i vrijeme")]
+        [StringLength(50, ErrorMessage = "Znakovno polje mora biti manje od 50 znakova.")]
+        [Required(ErrorMessage = "Obavezno polje.")]
         public string DatumVrijeme { get; set; }
         public int SifraKategorijaVozila { get; set; }
         public int SifraNacinPlacanja { get; set; }

@@ -13,6 +13,8 @@ namespace RPPP12.Models
 
         public int SifraVrsteObjekta { get; set; }
         [Display(Name = "Naziv objekta")]
+        [StringLength(50, ErrorMessage = "Znakovno polje mora biti manje od 50 znakova.")]
+        [Required(ErrorMessage = "Obavezno polje.")]
         public string NazivObjekta { get; set; }
 
         public ICollection<Objekt> Objekt { get; set; }
