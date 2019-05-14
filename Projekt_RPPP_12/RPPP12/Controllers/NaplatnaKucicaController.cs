@@ -6,23 +6,84 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RPPP12.Models;
+using Microsoft.Extensions.Options;
+using RPPP12.ViewModels;
 
 namespace RPPP12.Controllers
 {
     public class NaplatnaKucicaController : Controller
     {
         private readonly RPPP12Context _context;
+        private readonly AppSettings appData;
 
-        public NaplatnaKucicaController(RPPP12Context context)
+        public NaplatnaKucicaController(RPPP12Context context, IOptionsSnapshot<AppSettings> options)
         {
             _context = context;
+            appData = options.Value;
         }
 
         // GET: NaplatnaKucica
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1, int sort = 1, bool ascending = true)
         {
-            var rPPP12Context = _context.NaplatnaKucica.Include(n => n.SifraBlagajnikaNavigation).Include(n => n.SifraPostajaNavigation).Include(n => n.VrstaNaplatneKuciceNavigation);
-            return View(await rPPP12Context.ToListAsync());
+            //var rPPP12Context = _context.NaplatnaKucica.Include(n => n.SifraBlagajnikaNavigation).Include(n => n.SifraPostajaNavigation).Include(n => n.VrstaNaplatneKuciceNavigation);
+            //return View(await rPPP12Context.ToListAsync());
+            int pagesize = appData.PageSize;
+
+            var query = _context.NaplatnaKucica
+                        .AsNoTracking();
+
+            int count = query.Count();
+            if (count == 0)
+            {
+                return RedirectToAction(nameof(Create));
+            }
+
+            var pagingInfo = new PagingInfo
+            {
+                CurrentPage = page,
+                Sort = sort,
+                Ascending = ascending,
+                ItemsPerPage = pagesize,
+                TotalItems = count
+            };
+            if (page > pagingInfo.TotalPages)
+            {
+                return RedirectToAction(nameof(Index), new { page = pagingInfo.TotalPages, sort, ascending });
+            }
+
+            System.Linq.Expressions.Expression<Func<NaplatnaKucica, object>> orderSelector = null;
+            switch (sort)
+            {
+                case 1:
+                    orderSelector = d => d.SifraBlagajnikaNavigation.Ime;
+                    break;
+                case 2:
+                    orderSelector = d => d.SifraPostajaNavigation.ImePostaje;
+                    break;
+                case 3:
+                    orderSelector = d => d.VrstaNaplatneKuciceNavigation.VrstaNaplatneKucice1;
+                    break;
+            }
+            if (orderSelector != null)
+            {
+                query = ascending ?
+                       query.OrderBy(orderSelector) :
+                       query.OrderByDescending(orderSelector);
+            }
+            var naplatneKucice = query
+                        .Include(n => n.SifraBlagajnikaNavigation)
+                        .Include(n => n.SifraPostajaNavigation)
+                        .Include(n => n.VrstaNaplatneKuciceNavigation)
+                        .Skip((page - 1) * pagesize)
+                        .Take(pagesize)
+                        .ToList();
+            var model = new NaplatnaKucicaViewModel
+            {
+                NaplatneKucice = naplatneKucice,
+                PagingInfo = pagingInfo
+            };
+
+            return View(model);
         }
 
         // GET: NaplatnaKucica/Details/5
