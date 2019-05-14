@@ -111,7 +111,7 @@ namespace RPPP12.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CjenikExists(cjenik.SifraKucica))
+                    if (!CjenikExists(cjenik.SifraKucica, cjenik.SifraKategorijaVozila))
                     {
                         return NotFound();
                     }
@@ -128,9 +128,9 @@ namespace RPPP12.Controllers
         }
 
         // GET: Cjenik/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id1, int? id2)
         {
-            if (id == null)
+            if (id1 == null || id2==null)
             {
                 return NotFound();
             }
@@ -138,7 +138,7 @@ namespace RPPP12.Controllers
             var cjenik = await _context.Cjenik
                 .Include(c => c.SifraKategorijaVozilaNavigation)
                 .Include(c => c.SifraKucicaNavigation)
-                .FirstOrDefaultAsync(m => m.SifraKucica == id);
+                .FirstOrDefaultAsync(m => m.SifraKucica == id1 && m.SifraKategorijaVozila==id2);
             if (cjenik == null)
             {
                 return NotFound();
@@ -150,18 +150,18 @@ namespace RPPP12.Controllers
         // POST: Cjenik/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int? id1, int? id2)
         {
-            var cjenik = await _context.Cjenik.FindAsync(id);
+            var cjenik = await _context.Cjenik.FindAsync(id1, id2);
             _context.Cjenik.Remove(cjenik);
             await _context.SaveChangesAsync();
             TempData["delete"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CjenikExists(int id)
+        private bool CjenikExists(int id1, int id2)
         {
-            return _context.Cjenik.Any(e => e.SifraKucica == id);
+            return _context.Cjenik.Any(e => e.SifraKucica == id1 && e.SifraKategorijaVozila == id2);
         }
     }
 }
