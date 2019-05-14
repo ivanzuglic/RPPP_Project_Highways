@@ -76,6 +76,8 @@ namespace RPPP12.Controllers
                        query.OrderByDescending(orderSelector);
             }
             var uredaji = query
+                        .Include(u => u.SifraObjektaNavigation)
+                        .Include(u => u.SifraVrsteUredajaNavigation)
                         .Skip((page - 1) * pagesize)
                         .Take(pagesize)
                         .ToList();

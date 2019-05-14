@@ -6,14 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RPPP12.Models;
+using Microsoft.Extensions.Options;
 
 namespace RPPP12.Controllers
 {
     public class UpraviteljController : Controller
     {
         private readonly RPPP12Context _context;
+        private readonly AppSettings appData;
 
-        public UpraviteljController(RPPP12Context context)
+        public UpraviteljController(RPPP12Context context, IOptionsSnapshot<AppSettings> options)
         {
             _context = context;
         }
