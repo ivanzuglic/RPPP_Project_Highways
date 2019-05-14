@@ -2,7 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Create_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -13,26 +13,43 @@
     <title>Edit</title>
 </head>
 <body>
+    @section side_nav{
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a class="nav-link" href="/autocesta">Autoceste</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/sjediste">Sjedište</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/lokacijaAutoceste">Lokacija</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/sustavNaplate">Sustav naplate</a>
+            </li>
 
-    <h4>LokacijaAutoceste</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="Edit" asp-route-id="@Model.SifraLokacije">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="SifraLokacije" />
-                <div class="form-group">
-                    <label asp-for="ImeLokacije" class="control-label"></label>
-                    <input asp-for="ImeLokacije" class="form-control" />
-                    <span asp-validation-for="ImeLokacije" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
-            </form>
+        </ul>
+    }
+    @section container {
+        <h4>LokacijaAutoceste</h4>
+        <hr />
+        <div class="row">
+            <div class="input-group mb-3">
+                <form asp-action="Edit" asp-route-id="@Model.SifraLokacije">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="SifraLokacije" />
+                    <div class="form-group">
+                        <label asp-for="ImeLokacije" class="control-label"></label>
+                        <input asp-for="ImeLokacije" class="form-control" />
+                        <span asp-validation-for="ImeLokacije" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-
+    }
     <div>
         <a asp-action="Index">Back to List</a>
     </div>

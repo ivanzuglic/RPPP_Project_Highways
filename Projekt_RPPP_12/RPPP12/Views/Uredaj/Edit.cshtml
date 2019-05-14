@@ -2,7 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Create_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -13,36 +13,53 @@
     <title>Edit</title>
 </head>
 <body>
+    @section side_nav{
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a class="nav-link" href="/scenarij">Scenariji</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/alarm">Alarmi</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/kategorijaScenarija">Kategorije scenarija</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="/vrstaUredaja">Vrste uređaja</a>
+            </li>
 
-    <h4>Uredaj</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="Edit" asp-route-id="@Model.SifraUredaja">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="SifraUredaja" />
-                <div class="form-group">
-                    <label asp-for="Status" class="control-label"></label>
-                    <input asp-for="Status" class="form-control" />
-                    <span asp-validation-for="Status" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="SifraObjekta" class="control-label"></label>
-                    <select asp-for="SifraObjekta" class="form-control" asp-items="ViewBag.SifraObjekta"></select>
-                    <span asp-validation-for="SifraObjekta" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="SifraVrsteUredaja" class="control-label"></label>
-                    <select asp-for="SifraVrsteUredaja" class="form-control" asp-items="ViewBag.SifraVrsteUredaja"></select>
-                    <span asp-validation-for="SifraVrsteUredaja" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
-            </form>
+        </ul>
+    }
+    @section container {
+        <h4>Uredaj</h4>
+        <hr />
+        <div class="row">
+            <div class="input-group mb-3">
+                <form asp-action="Edit" asp-route-id="@Model.SifraUredaja">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="SifraUredaja" />
+                    <div class="form-group">
+                        <label asp-for="Status" class="control-label"></label>
+                        <input asp-for="Status" class="form-control" />
+                        <span asp-validation-for="Status" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SifraObjekta" class="control-label"></label>
+                        <select asp-for="SifraObjekta" class="form-control" asp-items="ViewBag.SifraObjekta"></select>
+                        <span asp-validation-for="SifraObjekta" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SifraVrsteUredaja" class="control-label"></label>
+                        <select asp-for="SifraVrsteUredaja" class="form-control" asp-items="ViewBag.SifraVrsteUredaja"></select>
+                        <span asp-validation-for="SifraVrsteUredaja" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-
+    }
     <div>
         <a asp-action="Index">Back to List</a>
     </div>
