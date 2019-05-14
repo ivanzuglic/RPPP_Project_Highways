@@ -5,62 +5,129 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using RPPP12.Models;
+using RPPP12.ViewModels;
 
 namespace RPPP12.Controllers
 {
     public class UredajController : Controller
     {
         private readonly RPPP12Context _context;
-        private const int ITEMS_PER_PAGE = 3;
+        private readonly AppSettings appData;
+        //private const int ITEMS_PER_PAGE = 3;
 
-        public UredajController(RPPP12Context context)
+        public UredajController(RPPP12Context context, IOptionsSnapshot<AppSettings> options)
         {
             _context = context;
+            appData = options.Value;
         }
 
         // GET: Uredaj/pagination-2
         //or
         //GET: Uredaj/all
-        public async Task<IActionResult> Index(String data="pagination-1")
+        public IActionResult Index(int page = 1, int sort = 1, bool ascending = true)
         {
-            String[] config = data.Split("-");
-            switch (config.Length)
+            int pagesize = appData.PageSize;
+
+            var query = _context.Uredaj
+                        .AsNoTracking();
+
+            int count = query.Count();
+            if (count == 0)
+            {
+                return RedirectToAction(nameof(Create));
+            }
+
+            var pagingInfo = new PagingInfo
+            {
+                CurrentPage = page,
+                Sort = sort,
+                Ascending = ascending,
+                ItemsPerPage = pagesize,
+                TotalItems = count
+            };
+            if (page > pagingInfo.TotalPages)
+            {
+                return RedirectToAction(nameof(Index), new { page = pagingInfo.TotalPages, sort, ascending });
+            }
+
+            System.Linq.Expressions.Expression<Func<Uredaj, object>> orderSelector = null;
+            switch (sort)
             {
                 case 1:
-                    if(config[0].Trim().ToLower() == "all")
-                    {
-                        var rPPP12Context = _context.Uredaj.Include(u => u.SifraObjektaNavigation)
-                        .Include(u => u.SifraVrsteUredajaNavigation)
-                        .OrderBy(u => u.SifraUredaja);
-                        return View(await rPPP12Context.ToListAsync());
-                    }
-                    else
-                    {
-                        return BadRequest("Invalid argument. Expected all");
-                    }
-                    
-                case 2:
-                    try
-                    {
-                        int pageIndex = Int32.Parse(config[1].Trim());
-                        var rPPP12Context2 = _context.Uredaj.Include(u => u.SifraObjektaNavigation)
-                        .Include(u => u.SifraVrsteUredajaNavigation)
-                        .OrderBy(u => u.SifraUredaja)
-                        .Skip(ITEMS_PER_PAGE * (pageIndex - 1))
-                        .Take(ITEMS_PER_PAGE);
-                        return View(await rPPP12Context2.ToListAsync());
-                    }
-                    catch (Exception e)
-                    {
-                        return BadRequest("Invalid¸pageIndexArgument. Input must be type of action-pageIndex.");
-                    }
-                    
-                default:
-                    return BadRequest("Invalid argument input. Input must be type of action-pageIndex.");
+                    orderSelector = d => d.SifraUredaja;
+                    break;
+                //sortiranje po drugim parametrima
+                /*case 2:
+                    orderSelector = d => d.NazDrzave;
+                    break;
+                case 3:
+                    orderSelector = d => d.Iso3drzave;
+                    break;
+                case 4:
+                    orderSelector = d => d.SifDrzave;
+                    break; */
             }
-            
+            if (orderSelector != null)
+            {
+                query = ascending ?
+                       query.OrderBy(orderSelector) :
+                       query.OrderByDescending(orderSelector);
+            }
+            var uredaji = query
+                        .Skip((page - 1) * pagesize)
+                        .Take(pagesize)
+                        .ToList();
+            var model = new UredajViewModel
+            {
+                Uredaji = uredaji,
+                PagingInfo = pagingInfo
+            };
+
+            return View(model);
         }
+        //Stari kontroler koji radi
+        /* public async Task<IActionResult> Index(String data="pagination-1")
+         {
+             String[] config = data.Split("-");
+             switch (config.Length)
+             {
+                 case 1:
+                     if(config[0].Trim().ToLower() == "all")
+                     {
+                         var rPPP12Context = _context.Uredaj.Include(u => u.SifraObjektaNavigation)
+                         .Include(u => u.SifraVrsteUredajaNavigation)
+                         .OrderBy(u => u.SifraUredaja);
+                         return View(await rPPP12Context.ToListAsync());
+                     }
+                     else
+                     {
+                         return BadRequest("Invalid argument. Expected all");
+                     }
+
+                 case 2:
+                     try
+                     {
+                         int pageIndex = Int32.Parse(config[1].Trim());
+                         var rPPP12Context2 = _context.Uredaj.Include(u => u.SifraObjektaNavigation)
+                         .Include(u => u.SifraVrsteUredajaNavigation)
+                         .OrderBy(u => u.SifraUredaja)
+                         .Skip(ITEMS_PER_PAGE * (pageIndex - 1))
+                         .Take(ITEMS_PER_PAGE);
+                         return View(await rPPP12Context2.ToListAsync());
+                     }
+                     catch (Exception e)
+                     {
+                         return BadRequest("Invalid¸pageIndexArgument. Input must be type of action-pageIndex.");
+                     }
+
+                 default:
+                     return BadRequest("Invalid argument input. Input must be type of action-pageIndex.");
+             }
+
+         } */
+
 
         // GET: Uredaj/Details/5
         public async Task<IActionResult> Details(int? id)
