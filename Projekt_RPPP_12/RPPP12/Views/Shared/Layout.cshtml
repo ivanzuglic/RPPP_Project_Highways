@@ -11,7 +11,12 @@
     <script>
         function showForm(id) {
             var redci = document.getElementsByClassName('forma');
-            redci[id].style.display = "block";
+            if (redci[id].style.display === "none") {
+                redci[id].style.display = "block";
+            }
+            else {
+                redci[id].style.display = "none";
+            }
         }
     </script>
 </head>
