@@ -33,7 +33,7 @@ namespace RPPP12.Controllers
 
 
         // GET: Dionica
-        [Route("~/Dionica")]
+        //[Route("~/dionica")]
         public async Task<IActionResult> Index(int page = 1, int sort = 1, bool ascending = true)
         {
             //var rPPP12Context = _context.Dionica.Include(d => d.SifraAutocesteNavigation).Include(d => d.SifraKrajaNavigation).Include(d => d.SifraPocetkaNavigation);
