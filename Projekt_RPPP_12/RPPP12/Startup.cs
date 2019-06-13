@@ -53,12 +53,10 @@ namespace RPPP12
                     name: "default",
                     template: "{controller=Home}/{action=Index}"
                 );
-                /*
                 routes.MapRoute(
                     name: "dionica",
                     template: "{controller=Dionica}/{action=Index}"
                 );
-                */
                 routes.MapRoute(
                     name: "naplatnapostaja",
                     template: "{controller=NaplatnaPostaja}/{action=Index}"
