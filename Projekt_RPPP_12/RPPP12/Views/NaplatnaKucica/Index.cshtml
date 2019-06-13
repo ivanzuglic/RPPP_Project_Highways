@@ -84,6 +84,17 @@
                             <a asp-action="Delete" asp-route-id="@item.SifraKucica">Delete</a>
                         </td>
                     </tr>
+                    <tr>
+                        <td style="padding-left:10%;">
+                            Računi:
+
+                            @foreach (var rac in item.Racun)
+                            {
+                                @rac.SifraRacun@((rac != item.Racun.Last()) ? "," : "") <text>&nbsp;</text>
+                            }
+
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>

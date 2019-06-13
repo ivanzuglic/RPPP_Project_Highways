@@ -79,6 +79,7 @@ namespace RPPP12.Controllers
             var dogadaji = query
                         .Include(d => d.SifraDionicaNavigation)
                         .Include(d => d.SifraRazinaOpasnostiNavigation)
+                        .Include(n => n.Stanje)
                         .Skip((page - 1) * pagesize)
                         .Take(pagesize)
                         .ToList();
@@ -103,6 +104,7 @@ namespace RPPP12.Controllers
             var dogadaj = await _context.Dogadaj
                 .Include(d => d.SifraDionicaNavigation)
                 .Include(d => d.SifraRazinaOpasnostiNavigation)
+                .Include(n => n.Stanje)
                 .FirstOrDefaultAsync(m => m.SifraDogadaj == id);
             if (dogadaj == null)
             {

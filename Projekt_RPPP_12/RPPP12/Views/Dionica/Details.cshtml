@@ -61,6 +61,37 @@
                 <dd>
                     @Html.DisplayFor(model => model.SifraPocetkaNavigation.NazivLokacije)
                 </dd>
+                <dt>
+                    Objekti
+                </dt>
+                <dd>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Dionica
+                                </th>
+                                <th>
+                                    Vrsta objekta
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Objekt)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SifraDioniceNavigation.Naziv)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SifraVrstaObjektaNavigation.NazivObjekta)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </dd>
             </dl>
         </div>
         <div>

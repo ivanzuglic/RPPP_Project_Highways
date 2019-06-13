@@ -56,6 +56,49 @@
                 <dd>
                     @Html.DisplayFor(model => model.VrstaNaplatneKuciceNavigation.VrstaNaplatneKucice1)
                 </dd>
+                <dt>
+                    Računi
+                </dt>
+                <dd>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Registarska oznaka
+                                </th>
+                                <th>
+                                    Datum i vrijeme
+                                </th>
+                                <th>
+                                    Kategorija vozila
+                                </th>
+                                <th>
+                                    Način plaćanja
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Racun)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RegistarskaOznaka)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DatumVrijeme)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SifraKategorijaVozilaNavigation.Opis)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SifraNacinPlacanjaNavigation.NacinPlacanja1)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </dd>
             </dl>
         </div>
         <div>

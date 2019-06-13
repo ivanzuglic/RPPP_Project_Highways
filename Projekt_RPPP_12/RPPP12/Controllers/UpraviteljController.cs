@@ -80,6 +80,7 @@ namespace RPPP12.Controllers
             }
             var upravitelji = query
                         .Include(u => u.SifraSjedistaNavigation)
+                        .Include(u => u.Autocesta)
                         .Skip((page - 1) * pagesize)
                         .Take(pagesize)
                         .ToList();
@@ -103,6 +104,12 @@ namespace RPPP12.Controllers
 
             var upravitelj = await _context.Upravitelj
                 .Include(u => u.SifraSjedistaNavigation)
+                .Include(u => u.Autocesta)
+                .ThenInclude(n => n.SifraNacinaPlacanjaNavigation)
+                .Include(u => u.Autocesta)
+                .ThenInclude(n => n.SifraPocetkaNavigation)
+                .Include(u => u.Autocesta)
+                .ThenInclude(n => n.SifraZavrsetkaNavigation)
                 .FirstOrDefaultAsync(m => m.SifraUpravitelja == id);
             if (upravitelj == null)
             {

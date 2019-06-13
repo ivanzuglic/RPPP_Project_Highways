@@ -94,6 +94,17 @@
                             <a asp-action="Delete" asp-route-id="@item.SifraDogadaj">Delete</a>
                         </td>
                     </tr>
+                    <tr>
+                        <td style="padding-left:10%;">
+                            Stanja:
+
+                            @foreach (var st in item.Stanje)
+                            {
+                                 @st.Opis@((st != item.Stanje.Last()) ? "," : "") <text>&nbsp;</text>
+                            }
+
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>

@@ -71,7 +71,7 @@
                 </tr>
             </thead>
             <tbody>
-                @{ 
+                @{
                     int i = 0;
                 }
 
@@ -98,6 +98,17 @@
                             <a asp-action="Details" asp-route-id="@item.SifraDionice">Details</a> |
                             <a asp-action="Delete" asp-route-id="@item.SifraDionice">Delete</a>
                             <button type="button" class="btn btn-outline-info" onclick="showForm(@i)">?</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left:10%;">
+                            Objekti:
+
+                            @foreach (var ob in item.Objekt)
+                            {
+                                @ob.SifraVrstaObjektaNavigation.NazivObjekta@((ob != item.Objekt.Last()) ? "," : "") <text>&nbsp;</text>
+                            }
+
                         </td>
                     </tr>
                     i = i + 1;

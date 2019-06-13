@@ -77,7 +77,10 @@ namespace RPPP12.Controllers
             }
             var uredaji = query
                         .Include(u => u.SifraObjektaNavigation)
+                        .ThenInclude(v => v.SifraVrstaObjektaNavigation)
                         .Include(u => u.SifraVrsteUredajaNavigation)
+                        .Include(u => u.Alarm)
+                        .ThenInclude(s => s.SifraScenarijaNavigation)
                         .Skip((page - 1) * pagesize)
                         .Take(pagesize)
                         .ToList();
@@ -100,7 +103,11 @@ namespace RPPP12.Controllers
 
             var uredaj = await _context.Uredaj
                 .Include(u => u.SifraObjektaNavigation)
+                .ThenInclude(v => v.SifraVrstaObjektaNavigation)
                 .Include(u => u.SifraVrsteUredajaNavigation)
+                .Include(u => u.Alarm)
+                .ThenInclude(s => s.SifraScenarijaNavigation)
+                .ThenInclude(v => v.SifraVrsteScenarijaNavigation)
                 .FirstOrDefaultAsync(m => m.SifraUredaja == id);
             if (uredaj == null)
             {

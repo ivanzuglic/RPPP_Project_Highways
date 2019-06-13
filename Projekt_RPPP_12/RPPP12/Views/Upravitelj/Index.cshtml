@@ -99,6 +99,17 @@
                             <a asp-action="Delete" asp-route-id="@item.SifraUpravitelja">Delete</a>
                         </td>
                     </tr>
+                    <tr>
+                        <td style="padding-left:10%;">
+                            Autoceste:
+
+                            @foreach (var aut in item.Autocesta)
+                            {
+                                @aut.ImeAutoceste@((aut != item.Autocesta.Last()) ? "," : "") <text>&nbsp;</text>
+                            }
+
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>

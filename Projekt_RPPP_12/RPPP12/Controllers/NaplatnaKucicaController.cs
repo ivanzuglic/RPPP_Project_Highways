@@ -74,6 +74,7 @@ namespace RPPP12.Controllers
                         .Include(n => n.SifraBlagajnikaNavigation)
                         .Include(n => n.SifraPostajaNavigation)
                         .Include(n => n.VrstaNaplatneKuciceNavigation)
+                        .Include(n => n.Racun)
                         .Skip((page - 1) * pagesize)
                         .Take(pagesize)
                         .ToList();
@@ -98,6 +99,10 @@ namespace RPPP12.Controllers
                 .Include(n => n.SifraBlagajnikaNavigation)
                 .Include(n => n.SifraPostajaNavigation)
                 .Include(n => n.VrstaNaplatneKuciceNavigation)
+                .Include(n => n.Racun)
+                .ThenInclude(z => z.SifraKategorijaVozilaNavigation)
+                .Include(n => n.Racun)
+                .ThenInclude(t => t.SifraNacinPlacanjaNavigation)
                 .FirstOrDefaultAsync(m => m.SifraKucica == id);
             if (naplatnaKucica == null)
             {

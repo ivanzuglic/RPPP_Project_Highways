@@ -107,28 +107,39 @@
             <tbody>
                 @foreach (var uredaj in Model.Uredaji)
                 {
-                <tr>
-                    
-                   <td>
+                    <tr>
 
-                        @Html.DisplayFor(modelItem => uredaj.SifraUredaja)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => uredaj.SifraObjektaNavigation.SifraObjekta)
+                        <td>
 
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => uredaj.Status)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => uredaj.SifraVrsteUredajaNavigation.NazivVrsteUredaja)
-                    </td> 
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@uredaj.SifraUredaja">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@uredaj.SifraUredaja">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@uredaj.SifraUredaja">Delete</a>
-                    </td>
-                </tr>
+                            @Html.DisplayFor(modelItem => uredaj.SifraUredaja)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => uredaj.SifraObjektaNavigation.SifraVrstaObjektaNavigation.NazivObjekta)
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => uredaj.Status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => uredaj.SifraVrsteUredajaNavigation.NazivVrsteUredaja)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@uredaj.SifraUredaja">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@uredaj.SifraUredaja">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@uredaj.SifraUredaja">Delete</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left:10%;">
+                            Scenariji:
+
+                            @foreach (var s in uredaj.Alarm)
+                            {
+                                @s.SifraScenarijaNavigation.NazivScenarija@((s != uredaj.Alarm.Last()) ? "," : "") <text>&nbsp;</text>
+                            }
+
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>
