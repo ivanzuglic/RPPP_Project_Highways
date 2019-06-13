@@ -35,6 +35,9 @@ namespace RPPP12.Controllers
         // GET: Dionica
         public async Task<IActionResult> Index(int page = 1, int sort = 1, bool ascending = true)
         {
+            ViewData["SifraAutoceste"] = new SelectList(_context.Autocesta, "SifraAutoceste", "ImeAutoceste");
+            ViewData["SifraKraja"] = new SelectList(_context.LokacijaPostaje, "SifraLokacije", "NazivLokacije");
+            ViewData["SifraPocetka"] = new SelectList(_context.LokacijaPostaje, "SifraLokacije", "NazivLokacije");
             //var rPPP12Context = _context.Dionica.Include(d => d.SifraAutocesteNavigation).Include(d => d.SifraKrajaNavigation).Include(d => d.SifraPocetkaNavigation);
             //return View(await rPPP12Context.ToListAsync());
             int pagesize = appData.PageSize;
