@@ -94,6 +94,8 @@ namespace RPPP12.Controllers
                         .Include(d => d.SifraAutocesteNavigation)
                         .Include(d => d.SifraKrajaNavigation)
                         .Include(d => d.SifraPocetkaNavigation)
+                        .Include(d => d.Objekt)
+                        .ThenInclude(n => n.SifraVrstaObjektaNavigation)
                         .Skip((page - 1) * pagesize)
                         .Take(pagesize)
                         .ToList();
@@ -119,6 +121,8 @@ namespace RPPP12.Controllers
                 .Include(d => d.SifraAutocesteNavigation)
                 .Include(d => d.SifraKrajaNavigation)
                 .Include(d => d.SifraPocetkaNavigation)
+                .Include(n => n.Objekt)
+                .ThenInclude(z => z.SifraVrstaObjektaNavigation)
                 .FirstOrDefaultAsync(m => m.SifraDionice == id);
             if (dionica == null)
             {

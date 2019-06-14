@@ -25,6 +25,9 @@ namespace RPPP12.Controllers
         // GET: NaplatnaKucica
         public async Task<IActionResult> Index(int page = 1, int sort = 1, bool ascending = true)
         {
+            ViewData["SifraBlagajnika"] = new SelectList(_context.Zaposlenik, "SifraZaposlenika", "Ime");
+            ViewData["SifraPostaja"] = new SelectList(_context.NaplatnaPostaja, "SifraPostaje", "SifraPostaje");
+            ViewData["VrstaNaplatneKucice"] = new SelectList(_context.VrstaNaplatneKucice, "VrstaNaplatneKucice1", "VrstaNaplatneKucice1");
             //var rPPP12Context = _context.NaplatnaKucica.Include(n => n.SifraBlagajnikaNavigation).Include(n => n.SifraPostajaNavigation).Include(n => n.VrstaNaplatneKuciceNavigation);
             //return View(await rPPP12Context.ToListAsync());
             int pagesize = appData.PageSize;
@@ -74,6 +77,7 @@ namespace RPPP12.Controllers
                         .Include(n => n.SifraBlagajnikaNavigation)
                         .Include(n => n.SifraPostajaNavigation)
                         .Include(n => n.VrstaNaplatneKuciceNavigation)
+                        .Include(n => n.Racun)
                         .Skip((page - 1) * pagesize)
                         .Take(pagesize)
                         .ToList();
@@ -98,6 +102,10 @@ namespace RPPP12.Controllers
                 .Include(n => n.SifraBlagajnikaNavigation)
                 .Include(n => n.SifraPostajaNavigation)
                 .Include(n => n.VrstaNaplatneKuciceNavigation)
+                .Include(n => n.Racun)
+                .ThenInclude(z => z.SifraKategorijaVozilaNavigation)
+                .Include(n => n.Racun)
+                .ThenInclude(t => t.SifraNacinPlacanjaNavigation)
                 .FirstOrDefaultAsync(m => m.SifraKucica == id);
             if (naplatnaKucica == null)
             {

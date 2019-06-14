@@ -39,7 +39,7 @@
            asp-route-sort=@(Model.PagingInfo.Sort) asp-route-ascending=@(Model.PagingInfo.Ascending)>Nazad</a>
         <a asp-route-page=@(Model.PagingInfo.CurrentPage == Model.PagingInfo.TotalPages ? Model.PagingInfo.TotalPages : Model.PagingInfo.CurrentPage+1)
            asp-route-sort=@(Model.PagingInfo.Sort) asp-route-ascending=@(Model.PagingInfo.Ascending)>Napred</a>
-        <table class="table table-striped">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th>
@@ -71,7 +71,7 @@
                 </tr>
             </thead>
             <tbody>
-                @{ 
+                @{
                     int i = 0;
                 }
 
@@ -96,49 +96,58 @@
                         <td>
                             <a asp-action="Edit" asp-route-id="@item.SifraDionice">Edit</a> |
                             <a asp-action="Details" asp-route-id="@item.SifraDionice">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.SifraDionice">Delete</a>
+                            <a asp-action="Delete" asp-route-id="@item.SifraDionice">Delete</a> |
                             <button type="button" class="btn btn-outline-info" onclick="showForm(@i)">?</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="padding-left: 100px;">
+                            Objekti:
+
+                            @foreach (var ob in item.Objekt)
+                            {
+                                @ob.SifraVrstaObjektaNavigation.NazivObjekta@((ob != item.Objekt.Last()) ? "," : "") <text>&nbsp;</text>
+                            }
+
                         </td>
                     </tr>
                     i = i + 1;
                     <tr class="forma" style="display: none;">
                         <td>
                             <div class="row">
-                                <div class="input-group mb-3">
-                                    <form asp-action="Edit" asp-route-id="@item.SifraDionice">
-                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                        <input type="hidden" asp-for="@item.SifraDionice" />
-                                        <div class="form-group">
-                                            <label asp-for="@item.Naziv" class="control-label"></label>
-                                            <input asp-for="@item.Naziv" class="form-control" />
-                                            <span asp-validation-for="@item.Naziv" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="@item.SifraPocetka" class="control-label"></label>
-                                            <select asp-for="@item.SifraPocetka" class="form-control" asp-items="ViewBag.SifraPocetka"></select>
-                                            <span asp-validation-for="@item.SifraPocetka" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="@item.SifraKraja" class="control-label"></label>
-                                            <select asp-for="@item.SifraKraja" class="form-control" asp-items="ViewBag.SifraKraja"></select>
-                                            <span asp-validation-for="@item.SifraKraja" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="@item.SifraAutoceste" class="control-label"></label>
-                                            <select asp-for="@item.SifraAutoceste" class="form-control" asp-items="ViewBag.SifraAutoceste"></select>
-                                            <span asp-validation-for="@item.SifraAutoceste" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="@item.Duljina" class="control-label"></label>
-                                            <input asp-for="@item.Duljina" class="form-control" />
-                                            <span asp-validation-for="@item.Duljina" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="submit" value="Save" class="btn btn-default" />
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                                <form asp-action="Edit" asp-route-id="@item.SifraDionice">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <input type="hidden" asp-for="@item.SifraDionice" />
+                                    <div class="form-group">
+                                        <label asp-for="@item.Naziv" class="control-label"></label>
+                                        <input asp-for="@item.Naziv" class="form-control" />
+                                        <span asp-validation-for="@item.Naziv" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="@item.SifraPocetka" class="control-label"></label>
+                                        <select asp-for="@item.SifraPocetka" class="form-control" asp-items="ViewBag.SifraPocetka"></select>
+                                        <span asp-validation-for="@item.SifraPocetka" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="@item.SifraKraja" class="control-label"></label>
+                                        <select asp-for="@item.SifraKraja" class="form-control" asp-items="ViewBag.SifraKraja"></select>
+                                        <span asp-validation-for="@item.SifraKraja" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="@item.SifraAutoceste" class="control-label"></label>
+                                        <select asp-for="@item.SifraAutoceste" class="form-control" asp-items="ViewBag.SifraAutoceste"></select>
+                                        <span asp-validation-for="@item.SifraAutoceste" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="@item.Duljina" class="control-label"></label>
+                                        <input asp-for="@item.Duljina" class="form-control" />
+                                        <span asp-validation-for="@item.Duljina" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Save" class="btn btn-default" />
+                                    </div>
+                                </form>
+                            </div>   
                         </td>
                     </tr>
                 }

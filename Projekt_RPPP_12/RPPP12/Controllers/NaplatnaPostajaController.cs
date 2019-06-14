@@ -25,10 +25,13 @@ namespace RPPP12.Controllers
         // GET: NaplatnaPostaja
         public async Task<IActionResult> Index(int page = 1, int sort = 1, bool ascending = true) 
         {
+            ViewData["SifraDionice"] = new SelectList(_context.Dionica, "SifraDionice", "Naziv");
+            ViewData["SifraLokacijePostaje"] = new SelectList(_context.LokacijaPostaje, "SifraLokacije", "NazivLokacije");
             //var rPPP12Context = _context.NaplatnaPostaja.Include(n => n.SifraDioniceNavigation).Include(n => n.SifraLokacijePostajeNavigation).Include(n => n.Zaposlenik);
             //return View(await rPPP12Context.ToListAsync());
             //var rPPP12Context = _context.Dionica.Include(d => d.SifraAutocesteNavigation).Include(d => d.SifraKrajaNavigation).Include(d => d.SifraPocetkaNavigation);
             //return View(await rPPP12Context.ToListAsync());
+
             int pagesize = appData.PageSize;
 
             var query = _context.NaplatnaPostaja

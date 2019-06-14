@@ -61,6 +61,49 @@
                 <dd>
                     @Html.DisplayFor(model => model.SifraRazinaOpasnostiNavigation.NazivRazinaOpasnosti)
                 </dd>
+                <dt>
+                    Stanja
+                </dt>
+                <dd>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Vrijeme početka
+                                </th>
+                                <th>
+                                    Vrijeme završetka
+                                </th>
+                                <th>
+                                    Opis
+                                </th>
+                                <th>
+                                    Zabrana
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Stanje)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.VrijemePocetka)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.VrijemeZavrsetka)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Opis)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SifraZabrana)
+                                    </td>                                  
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </dd>
             </dl>
         </div>
         <div>

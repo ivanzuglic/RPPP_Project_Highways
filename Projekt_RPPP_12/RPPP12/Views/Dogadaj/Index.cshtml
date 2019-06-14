@@ -33,36 +33,36 @@
             <a asp-action="Create">Create New</a>
         </p>
 
-        <a asp-route-page=@(Model.PagingInfo.CurrentPage == 1 ? 1 : Model.PagingInfo.CurrentPage-1)
+        <a asp-route-page=@(Model.PagingInfo.CurrentPage == 1 ? 1 : Model.PagingInfo.CurrentPage - 1)
            asp-route-sort=@(Model.PagingInfo.Sort) asp-route-ascending=@(Model.PagingInfo.Ascending)>Nazad</a>
-        <a asp-route-page=@(Model.PagingInfo.CurrentPage == Model.PagingInfo.TotalPages ? Model.PagingInfo.TotalPages : Model.PagingInfo.CurrentPage+1)
+        <a asp-route-page=@(Model.PagingInfo.CurrentPage == Model.PagingInfo.TotalPages ? Model.PagingInfo.TotalPages : Model.PagingInfo.CurrentPage + 1)
            asp-route-sort=@(Model.PagingInfo.Sort) asp-route-ascending=@(Model.PagingInfo.Ascending)>Napred</a>
 
-        <table class="table table-striped">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th>
-                        <a asp-route-sort="1" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 1 ? Model.PagingInfo.Ascending? false : true : true)">
+                        <a asp-route-sort="1" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 1 ? Model.PagingInfo.Ascending ? false : true : true)">
                             Dionica
                         </a>
                     </th>
                     <th>
-                        <a asp-route-sort="2" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 2 ? Model.PagingInfo.Ascending? false : true : true)">
+                        <a asp-route-sort="2" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 2 ? Model.PagingInfo.Ascending ? false : true : true)">
                             Datum i vrijeme
                         </a>
                     </th>
                     <th>
-                        <a asp-route-sort="3" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 3 ? Model.PagingInfo.Ascending? false : true : true)">
+                        <a asp-route-sort="3" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 3 ? Model.PagingInfo.Ascending ? false : true : true)">
                             Link
                         </a>
                     </th>
                     <th>
-                        <a asp-route-sort="4" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 4 ? Model.PagingInfo.Ascending? false : true : true)">
+                        <a asp-route-sort="4" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 4 ? Model.PagingInfo.Ascending ? false : true : true)">
                             Opis
                         </a>
                     </th>
                     <th>
-                        <a asp-route-sort="5" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 5 ? Model.PagingInfo.Ascending? false : true : true)">
+                        <a asp-route-sort="5" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 5 ? Model.PagingInfo.Ascending ? false : true : true)">
                             Razina opasnosti
                         </a>
                     </th>
@@ -70,6 +70,9 @@
                 </tr>
             </thead>
             <tbody>
+                @{
+                    int i = 0;
+                 }
                 @foreach (var item in Model.Dogadaji)
                 {
                     <tr>
@@ -91,11 +94,59 @@
                         <td>
                             <a asp-action="Edit" asp-route-id="@item.SifraDogadaj">Edit</a> |
                             <a asp-action="Details" asp-route-id="@item.SifraDogadaj">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.SifraDogadaj">Delete</a>
+                            <a asp-action="Delete" asp-route-id="@item.SifraDogadaj">Delete</a> |
+                            <button type="button" class="btn btn-outline-info" onclick="showForm(@i)">?</button>
                         </td>
                     </tr>
-                }
-            </tbody>
+                    <tr>
+                        <td style="padding-left:100px;" colspan="6">
+                            Stanja:
+
+                            @foreach (var st in item.Stanje)
+                            {
+                                @st.Opis@((st != item.Stanje.Last()) ? "," : "") <text>&nbsp;</text>
+                            }
+
+                        </td>
+                    </tr>
+                    i = i + 1;
+                    <tr class="forma" style="display: none;">
+                        <td>
+                            <div class="row">
+                                <div class="input-group mb-3">
+                                    <form asp-action="Edit" asp-route-id="@item.SifraDogadaj">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <input type="hidden" asp-for="@item.SifraDogadaj" />
+                                        <div class="form-group">
+                                            <label asp-for="@item.Link" class="control-label"></label>
+                                            <input asp-for="@item.Link" class="form-control" />
+                                            <span asp-validation-for="@item.Link" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@item.SifraRazinaOpasnosti" class="control-label"></label>
+                                            <select asp-for="@item.SifraRazinaOpasnosti" class="form-control" asp-items="ViewBag.SifraRazinaOpasnosti"></select>
+                                            <span asp-validation-for="@item.SifraRazinaOpasnosti" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@item.SifraDionica" class="control-label"></label>
+                                            <select asp-for="@item.SifraDionica" class="form-control" asp-items="ViewBag.SifraDionica"></select>
+                                            <span asp-validation-for="@item.SifraDionica" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@item.Opis" class="control-label"></label>
+                                            <input asp-for="@item.Opis" class="form-control" />
+                                            <span asp-validation-for="@item.Opis" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" value="Save" class="btn btn-default" />
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                 }
+                </tbody>
         </table>
     }
 </body>

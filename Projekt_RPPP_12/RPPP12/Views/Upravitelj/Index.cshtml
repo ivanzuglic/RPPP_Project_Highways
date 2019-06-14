@@ -42,7 +42,7 @@
         <a asp-route-page=@(Model.PagingInfo.CurrentPage == Model.PagingInfo.TotalPages ? Model.PagingInfo.TotalPages : Model.PagingInfo.CurrentPage+1)
            asp-route-sort=@(Model.PagingInfo.Sort) asp-route-ascending=@(Model.PagingInfo.Ascending)>Napred</a>
 
-        <table class="table table-striped">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th>
@@ -75,6 +75,9 @@
                 </tr>
             </thead>
             <tbody>
+                @{ 
+                    int i = 0;
+                }
                 @foreach (var item in Model.Upravitelji)
                 {
                     <tr>
@@ -96,7 +99,60 @@
                         <td>
                             <a asp-action="Edit" asp-route-id="@item.SifraUpravitelja">Edit</a> |
                             <a asp-action="Details" asp-route-id="@item.SifraUpravitelja">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.SifraUpravitelja">Delete</a>
+                            <a asp-action="Delete" asp-route-id="@item.SifraUpravitelja">Delete</a> |
+                            <button type="button" class="btn btn-outline-info" onclick="showForm(@i)">?</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left:100px;" colspan="6">
+                            Autoceste:
+
+                            @foreach (var aut in item.Autocesta)
+                            {
+                                @aut.ImeAutoceste@((aut != item.Autocesta.Last()) ? "," : "") <text>&nbsp;</text>
+                            }
+
+                        </td>
+                    </tr>
+                    i = i + 1;
+                    <tr class="forma" style="display: none;">
+                        <td>
+                            <div class="row">
+                                <div class="input-group mb-3">
+                                    <form asp-action="Edit" asp-route-id="@item.SifraUpravitelja">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <input type="hidden" asp-for="@item.SifraUpravitelja" />
+                                        <div class="form-group">
+                                            <label asp-for="@item.Oib" class="control-label"></label>
+                                            <input asp-for="@item.Oib" class="form-control" />
+                                            <span asp-validation-for="@item.Oib" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@item.Ime" class="control-label"></label>
+                                            <input asp-for="@item.Ime" class="form-control" />
+                                            <span asp-validation-for="@item.Ime" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@item.SifraSjedista" class="control-label"></label>
+                                            <select asp-for="@item.SifraSjedista" class="form-control" asp-items="ViewBag.SifraSjedista"></select>
+                                            <span asp-validation-for="@item.SifraSjedista" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@item.Email" class="control-label"></label>
+                                            <input asp-for="@item.Email" class="form-control" />
+                                            <span asp-validation-for="@item.Email" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@item.Telefon" class="control-label"></label>
+                                            <input asp-for="@item.Telefon" class="form-control" />
+                                            <span asp-validation-for="@item.Telefon" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" value="Save" class="btn btn-default" />
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </td>
                     </tr>
 

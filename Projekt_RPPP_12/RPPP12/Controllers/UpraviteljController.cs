@@ -27,6 +27,7 @@ namespace RPPP12.Controllers
         //return View(await rPPP12Context.ToListAsync());
         public async Task<IActionResult> Index(int page = 1, int sort = 1, bool ascending = true)
         {
+            ViewData["SifraSjedista"] = new SelectList(_context.Sjediste, "SifraSjedista", "Adresa");
             //var rPPP12Context = _context.NaplatnaKucica.Include(n => n.SifraBlagajnikaNavigation).Include(n => n.SifraPostajaNavigation).Include(n => n.VrstaNaplatneKuciceNavigation);
             //return View(await rPPP12Context.ToListAsync());
             int pagesize = appData.PageSize;
@@ -80,6 +81,7 @@ namespace RPPP12.Controllers
             }
             var upravitelji = query
                         .Include(u => u.SifraSjedistaNavigation)
+                        .Include(u => u.Autocesta)
                         .Skip((page - 1) * pagesize)
                         .Take(pagesize)
                         .ToList();
@@ -103,6 +105,12 @@ namespace RPPP12.Controllers
 
             var upravitelj = await _context.Upravitelj
                 .Include(u => u.SifraSjedistaNavigation)
+                .Include(u => u.Autocesta)
+                .ThenInclude(n => n.SifraNacinaPlacanjaNavigation)
+                .Include(u => u.Autocesta)
+                .ThenInclude(n => n.SifraPocetkaNavigation)
+                .Include(u => u.Autocesta)
+                .ThenInclude(n => n.SifraZavrsetkaNavigation)
                 .FirstOrDefaultAsync(m => m.SifraUpravitelja == id);
             if (upravitelj == null)
             {

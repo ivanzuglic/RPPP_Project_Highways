@@ -45,13 +45,56 @@
                     @Html.DisplayNameFor(model => model.SifraObjektaNavigation)
                 </dt>
                 <dd>
-                    @Html.DisplayFor(model => model.SifraObjektaNavigation.SifraObjekta)
+                    @Html.DisplayFor(model => model.SifraObjektaNavigation.SifraVrstaObjektaNavigation.NazivObjekta)
                 </dd>
                 <dt>
                     @Html.DisplayNameFor(model => model.SifraVrsteUredajaNavigation)
                 </dt>
                 <dd>
-                    @Html.DisplayFor(model => model.SifraVrsteUredajaNavigation.SifraVrsteUredaja)
+                    @Html.DisplayFor(model => model.SifraVrsteUredajaNavigation.NazivVrsteUredaja)
+                </dd>
+                <dt>
+                    Scenariji
+                </dt>
+                <dd>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Naziv scenarija
+                                </th>
+                                <th>
+                                    Procedura
+                                </th>
+                                <th>
+                                    Vrsta objekta
+                                </th>
+                                <th>
+                                    Kategorija scenarija
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Alarm)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SifraScenarijaNavigation.NazivScenarija)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SifraScenarijaNavigation.Procedura)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SifraScenarijaNavigation.SifraVrsteObjekta)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SifraScenarijaNavigation.SifraVrsteScenarijaNavigation.NazivKategorijeScenarija)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </dd>
             </dl>
         </div>
