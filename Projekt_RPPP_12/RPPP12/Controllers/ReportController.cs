@@ -1107,16 +1107,18 @@ namespace RPPP12.Controllers
         /// <returns>Vraća excel datoteku.</returns>
         public async Task<IActionResult> DogadajiExcel()
         {
-            var data = await ctx.NaplatnaKucica.Select(m => new NaplatnaKucica
+            var data = await ctx.Dogadaj.Select(m => new Dogadaj
             {
-                SifraKucica = m.SifraKucica,
-                SifraBlagajnika = m.SifraBlagajnika,
-                VrstaNaplatneKucice = m.VrstaNaplatneKucice
+                SifraDogadaj = m.SifraDogadaj,
+                DatumVrijeme = m.DatumVrijeme,
+                Link = m.Link,
+                SifraRazinaOpasnosti = m.SifraRazinaOpasnosti,
+                Opis = m.Opis
             })
                                   .AsNoTracking()
-                                  .OrderBy(d => d.SifraKucica)
+                                  .OrderBy(d => d.SifraDogadaj)
                                   .ToListAsync();
-            var excel = ExcelCreator.CreateExcel<NaplatnaKucica>(data, "dogadaji.xslsx");
+            var excel = ExcelCreator.CreateExcel<Dogadaj>(data, "dogadaji.xslsx");
             var content = excel.GetAsByteArray();
             return File(content, ExcelContentType, "dogadaji.xlsx");
         }
@@ -1136,9 +1138,9 @@ namespace RPPP12.Controllers
             byte[] content;
             using (ExcelPackage excel = new ExcelPackage())
             {
-                excel.Workbook.Properties.Title = "Master-detail kucice";
+                excel.Workbook.Properties.Title = "Master-detail";
                 excel.Workbook.Properties.Author = "Autoceste";
-                var worksheet = excel.Workbook.Worksheets.Add("MD-Kucica");
+                var worksheet = excel.Workbook.Worksheets.Add("MD");
                 //First add the headers
                 int i = 1;
                 foreach (var data in masterData)
