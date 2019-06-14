@@ -147,12 +147,15 @@
                                         <input type="submit" value="Save" class="btn btn-default" />
                                     </div>
                                 </form>
-                            </div>   
+                            </div>
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
+        <buton class="btn btn-primary" type="button" onclick="location.href='@Url.Action("DionicePdf","Report")'">EXPORT PDF</buton>
+        <buton class="btn btn-primary" type="button" onclick="location.href='@Url.Action("DioniceExcel","Report")'">EXPORT Excel</buton>
+        <buton class="btn btn-primary" type="button" onclick="location.href='@Url.Action("DioniceExcelMaster","Report")'">EXPORT Excel MD</buton>
     }
 </body>
 </html>

@@ -124,9 +124,12 @@
                             </div>
                         </td>
                     </tr>
-                    }
-                </tbody>
+                }
+            </tbody>
         </table>
+        <buton class="btn btn-primary" type="button" onclick="location.href='@Url.Action("PostajePdf","Report")'">EXPORT PDF</buton>
+        <buton class="btn btn-primary" type="button" onclick="location.href='@Url.Action("PostajeExcel","Report")'">EXPORT Excel</buton>
+        <buton class="btn btn-primary" type="button" onclick="location.href='@Url.Action("PostajeExcelMaster","Report")'">EXPORT Excel MD</buton>
     }
 </body>
 </html>

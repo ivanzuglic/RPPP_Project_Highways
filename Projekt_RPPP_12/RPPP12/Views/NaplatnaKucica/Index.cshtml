@@ -131,9 +131,12 @@
                             </div>
                         </td>
                     </tr>
-                 }
+                }
             </tbody>
         </table>
+        <buton class="btn btn-primary" type="button" onclick="location.href='@Url.Action("KućicePdf","Report")'">EXPORT PDF</buton>
+        <buton class="btn btn-primary" type="button" onclick="location.href='@Url.Action("KuciceExcel","Report")'">EXPORT Excel</buton>
+        <buton class="btn btn-primary" type="button" onclick="location.href='@Url.Action("KuciceExcelMaster","Report")'">EXPORT Excel MD</buton>
     }
 </body>
 </html>

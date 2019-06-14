@@ -15,34 +15,34 @@
 </head>
 <body>
     @section side_nav{
-    <ul class="list-group">
-        <li class="list-group-item">
-            <a class="nav-link" href="~/scenarij">Scenariji</a>
-        </li>
-        <li class="list-group-item">
-            <a class="nav-link" href="~/alarm">Alarmi</a>
-        </li>
-        <li class="list-group-item">
-            <a class="nav-link" href="~/kategorijaScenarija">Kategorije scenarija</a>
-        </li>
-        <li class="list-group-item">
-            <a class="nav-link" href="~/vrstaUredaja">Vrste uređaja</a>
-        </li>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a class="nav-link" href="~/scenarij">Scenariji</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="~/alarm">Alarmi</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="~/kategorijaScenarija">Kategorije scenarija</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="~/vrstaUredaja">Vrste uređaja</a>
+            </li>
 
-    </ul>
+        </ul>
     }
     @section container {
         <p>
             <a asp-action="Create">Create New</a>
         </p>
-        
 
-            <a asp-route-page=@(Model.PagingInfo.CurrentPage == 1 ? 1 : Model.PagingInfo.CurrentPage-1)
-                asp-route-sort=@(Model.PagingInfo.Sort) asp-route-ascending=@(Model.PagingInfo.Ascending)>Nazad</a>
-            <a asp-route-page=@(Model.PagingInfo.CurrentPage == Model.PagingInfo.TotalPages ? Model.PagingInfo.TotalPages : Model.PagingInfo.CurrentPage+1)
-                asp-route-sort=@(Model.PagingInfo.Sort) asp-route-ascending=@(Model.PagingInfo.Ascending)>Napred</a>
 
-        
+        <a asp-route-page=@(Model.PagingInfo.CurrentPage == 1 ? 1 : Model.PagingInfo.CurrentPage-1)
+           asp-route-sort=@(Model.PagingInfo.Sort) asp-route-ascending=@(Model.PagingInfo.Ascending)>Nazad</a>
+        <a asp-route-page=@(Model.PagingInfo.CurrentPage == Model.PagingInfo.TotalPages ? Model.PagingInfo.TotalPages : Model.PagingInfo.CurrentPage+1)
+           asp-route-sort=@(Model.PagingInfo.Sort) asp-route-ascending=@(Model.PagingInfo.Ascending)>Napred</a>
+
+
 
         <!--  <nav aria-label="Page navigation example">
               <ul class="pagination justify-content-center">
@@ -88,22 +88,22 @@
                 </tr>
             </thead>
             <!-- <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Uredaji)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Uredaji)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Uredaji)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Uredaji)
-            </th>
-            <th></th>
-        </tr>
-    </thead> -->
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Uredaji)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Uredaji)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Uredaji)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Uredaji)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead> -->
             <tbody>
                 @{
                     int i = 0;
@@ -176,9 +176,12 @@
                             </div>
                         </td>
                     </tr>
-                  }
-                </tbody>
+                }
+            </tbody>
         </table>
+        <buton class="btn btn-primary" type="button" onclick="location.href='@Url.Action("UredajPdf","Report")'">EXPORT PDF</buton>
+        <buton class="btn btn-primary" type="button" onclick="location.href='@Url.Action("UredajiExcel","Report")'">EXPORT Excel</buton>
+        <buton class="btn btn-primary" type="button" onclick="location.href='@Url.Action("UredajiExcelMaster","Report")'">EXPORT Excel MD</buton>
     }
 </body>
 </html>

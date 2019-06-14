@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Infrastructure;
 
 namespace RPPP12.Models
 {
-    public partial class Dogadaj
+    public partial class Dogadaj : IDbAsyncEnumerable<RPPP12.Models.Dogadaj>
     {
         public Dogadaj()
         {
@@ -30,5 +31,15 @@ namespace RPPP12.Models
         public RazinaOpasnosti SifraRazinaOpasnostiNavigation { get; set; }
         public ICollection<Alarm> Alarm { get; set; }
         public ICollection<Stanje> Stanje { get; set; }
+
+        IDbAsyncEnumerator IDbAsyncEnumerable.GetAsyncEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        IDbAsyncEnumerator<Dogadaj> IDbAsyncEnumerable<Dogadaj>.GetAsyncEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

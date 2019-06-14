@@ -72,7 +72,7 @@
             <tbody>
                 @{
                     int i = 0;
-                 }
+                }
                 @foreach (var item in Model.Dogadaji)
                 {
                     <tr>
@@ -145,9 +145,12 @@
                             </div>
                         </td>
                     </tr>
-                 }
-                </tbody>
+                }
+            </tbody>
         </table>
+        <buton class="btn btn-primary" type="button" onclick="location.href='@Url.Action("DogadajiPdf","Report")'">EXPORT PDF</buton>
+        <buton class="btn btn-primary" type="button" onclick="location.href='@Url.Action("DogadajiExcel","Report")'">EXPORT Excel</buton>
+        <buton class="btn btn-primary" type="button" onclick="location.href='@Url.Action("DogadajiExcelMaster","Report")'">EXPORT Excel MD</buton>
     }
 </body>
 </html>

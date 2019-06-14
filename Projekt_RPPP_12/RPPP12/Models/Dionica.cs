@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Infrastructure;
 
 namespace RPPP12.Models
 {
-    public partial class Dionica
+    public partial class Dionica : IDbAsyncEnumerable<RPPP12.Models.Dionica>
     {
         public Dionica()
         {
@@ -34,5 +35,15 @@ namespace RPPP12.Models
         [Display(Name = "Naplatna postaja")]
         public ICollection<NaplatnaPostaja> NaplatnaPostaja { get; set; }
         public ICollection<Objekt> Objekt { get; set; }
+
+        public IDbAsyncEnumerator<Dionica> GetAsyncEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        IDbAsyncEnumerator IDbAsyncEnumerable.GetAsyncEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
