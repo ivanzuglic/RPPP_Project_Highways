@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Infrastructure;
 
 namespace RPPP12.Models
 {
-    public partial class Upravitelj
+    public partial class Upravitelj : IDbAsyncEnumerable<RPPP12.Models.Upravitelj>
+
     {
         public Upravitelj()
         {
@@ -29,5 +31,15 @@ namespace RPPP12.Models
         [Display(Name = "Sjedište")]
         public Sjediste SifraSjedistaNavigation { get; set; }
         public ICollection<Autocesta> Autocesta { get; set; }
+
+        public IDbAsyncEnumerator<Upravitelj> GetAsyncEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        IDbAsyncEnumerator IDbAsyncEnumerable.GetAsyncEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Infrastructure;
 
 namespace RPPP12.Models
 {
-    public partial class NaplatnaPostaja
+    public partial class NaplatnaPostaja : IDbAsyncEnumerable<RPPP12.Models.NaplatnaPostaja>
     {
         public NaplatnaPostaja()
         {
@@ -26,5 +27,15 @@ namespace RPPP12.Models
         [Display(Name = "Naplatna kućica")]
         public ICollection<NaplatnaKucica> NaplatnaKucica { get; set; }
         public ICollection<Zaposlenik> Zaposlenik { get; set; }
+
+        public IDbAsyncEnumerator<NaplatnaPostaja> GetAsyncEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        IDbAsyncEnumerator IDbAsyncEnumerable.GetAsyncEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

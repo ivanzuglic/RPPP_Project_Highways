@@ -99,9 +99,13 @@
                             <a asp-action="Delete" asp-route-id="@item.SifraUpravitelja">Delete</a>
                         </td>
                     </tr>
+
                 }
             </tbody>
         </table>
+        <buton class="btn btn-primary" type="button" onclick="location.href='@Url.Action("UpravePdf","Report")'">EXPORT PDF</buton>
+        <buton class="btn btn-primary" type="button" onclick="location.href='@Url.Action("UpraviteljiExcel","Report")'">EXPORT Excel</buton>
+        <buton class="btn btn-primary" type="button" onclick="location.href='@Url.Action("UpraviteljiExcelMaster","Report")'">EXPORT Excel MD</buton>
     }
 </body>
 </html>
