@@ -44,7 +44,7 @@
            asp-route-sort=@(Model.PagingInfo.Sort) asp-route-ascending=@(Model.PagingInfo.Ascending)>Nazad</a>
         <a asp-route-page=@(Model.PagingInfo.CurrentPage == Model.PagingInfo.TotalPages ? Model.PagingInfo.TotalPages : Model.PagingInfo.CurrentPage+1)
            asp-route-sort=@(Model.PagingInfo.Sort) asp-route-ascending=@(Model.PagingInfo.Ascending)>Napred</a>
-        <table class="table table-striped">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th>
@@ -66,6 +66,10 @@
                 </tr>
             </thead>
             <tbody>
+                @{
+                    int i = 0;
+                }
+
                 @foreach (var item in Model.NaplatneKucice)
                 {
                     <tr>
@@ -81,11 +85,12 @@
                         <td>
                             <a asp-action="Edit" asp-route-id="@item.SifraKucica">Edit</a> |
                             <a asp-action="Details" asp-route-id="@item.SifraKucica">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.SifraKucica">Delete</a>
+                            <a asp-action="Delete" asp-route-id="@item.SifraKucica">Delete</a> |
+                            <button type="button" class="btn btn-outline-info" onclick="showForm(@i)">?</button>
                         </td>
                     </tr>
                     <tr>
-                        <td style="padding-left:10%;">
+                        <td style="padding-left:100px;" colspan="6">
                             Računi:
 
                             @foreach (var rac in item.Racun)
@@ -95,7 +100,38 @@
 
                         </td>
                     </tr>
-                }
+                    i = i + 1;
+                    <tr class="forma" style="display: none;">
+                        <td>
+                            <div class="row">
+                                <div class="input-group mb-3">
+                                    <form asp-action="Edit" asp-route-id="@item.SifraKucica">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <input type="hidden" asp-for="@item.SifraKucica" />
+                                        <div class="form-group">
+                                            <label asp-for="@item.SifraPostaja" class="control-label"></label>
+                                            <select asp-for="@item.SifraPostaja" class="form-control" asp-items="ViewBag.SifraPostaja"></select>
+                                            <span asp-validation-for="@item.SifraPostaja" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@item.SifraBlagajnika" class="control-label"></label>
+                                            <select asp-for="@item.SifraBlagajnika" class="form-control" asp-items="ViewBag.SifraBlagajnika"></select>
+                                            <span asp-validation-for="@item.SifraBlagajnika" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@item.VrstaNaplatneKucice" class="control-label"></label>
+                                            <select asp-for="@item.VrstaNaplatneKucice" class="form-control" asp-items="ViewBag.VrstaNaplatneKucice"></select>
+                                            <span asp-validation-for="@item.VrstaNaplatneKucice" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" value="Save" class="btn btn-default" />
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                 }
             </tbody>
         </table>
     }

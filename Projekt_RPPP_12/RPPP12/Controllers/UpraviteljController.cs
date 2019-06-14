@@ -27,6 +27,7 @@ namespace RPPP12.Controllers
         //return View(await rPPP12Context.ToListAsync());
         public async Task<IActionResult> Index(int page = 1, int sort = 1, bool ascending = true)
         {
+            ViewData["SifraSjedista"] = new SelectList(_context.Sjediste, "SifraSjedista", "Adresa");
             //var rPPP12Context = _context.NaplatnaKucica.Include(n => n.SifraBlagajnikaNavigation).Include(n => n.SifraPostajaNavigation).Include(n => n.VrstaNaplatneKuciceNavigation);
             //return View(await rPPP12Context.ToListAsync());
             int pagesize = appData.PageSize;

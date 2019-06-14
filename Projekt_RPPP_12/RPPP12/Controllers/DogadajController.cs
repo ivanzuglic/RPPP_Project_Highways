@@ -25,6 +25,8 @@ namespace RPPP12.Controllers
         // GET: Dogadaj
         public async Task<IActionResult> Index(int page = 1, int sort = 1, bool ascending = true)
         {
+            ViewData["SifraDionica"] = new SelectList(_context.Dionica, "SifraDionice", "Naziv");
+            ViewData["SifraRazinaOpasnosti"] = new SelectList(_context.RazinaOpasnosti, "SifraRazinaOpasnosti", "NazivRazinaOpasnosti");
             //var rPPP12Context = _context.NaplatnaKucica.Include(n => n.SifraBlagajnikaNavigation).Include(n => n.SifraPostajaNavigation).Include(n => n.VrstaNaplatneKuciceNavigation);
             //return View(await rPPP12Context.ToListAsync());
             int pagesize = appData.PageSize;

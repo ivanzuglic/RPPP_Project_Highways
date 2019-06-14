@@ -28,6 +28,8 @@ namespace RPPP12.Controllers
         //GET: Uredaj/all
         public IActionResult Index(int page = 1, int sort = 1, bool ascending = true)
         {
+            ViewData["SifraObjekta"] = new SelectList(_context.Objekt, "SifraObjekta", "SifraObjekta");
+            ViewData["SifraVrsteUredaja"] = new SelectList(_context.VrstaUredaja, "SifraVrsteUredaja", "SifraVrsteUredaja");
             int pagesize = appData.PageSize;
 
             var query = _context.Uredaj

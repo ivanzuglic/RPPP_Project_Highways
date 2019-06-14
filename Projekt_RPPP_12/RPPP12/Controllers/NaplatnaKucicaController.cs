@@ -25,6 +25,9 @@ namespace RPPP12.Controllers
         // GET: NaplatnaKucica
         public async Task<IActionResult> Index(int page = 1, int sort = 1, bool ascending = true)
         {
+            ViewData["SifraBlagajnika"] = new SelectList(_context.Zaposlenik, "SifraZaposlenika", "Ime");
+            ViewData["SifraPostaja"] = new SelectList(_context.NaplatnaPostaja, "SifraPostaje", "SifraPostaje");
+            ViewData["VrstaNaplatneKucice"] = new SelectList(_context.VrstaNaplatneKucice, "VrstaNaplatneKucice1", "VrstaNaplatneKucice1");
             //var rPPP12Context = _context.NaplatnaKucica.Include(n => n.SifraBlagajnikaNavigation).Include(n => n.SifraPostajaNavigation).Include(n => n.VrstaNaplatneKuciceNavigation);
             //return View(await rPPP12Context.ToListAsync());
             int pagesize = appData.PageSize;
