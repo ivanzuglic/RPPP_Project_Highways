@@ -1,0 +1,1 @@
+In this project, a webpage for tracking information about highways and managing highway toll tickets was created, which can then be used by highway workers to see relevant informations about respective highways and to keep records of all issued receipts
